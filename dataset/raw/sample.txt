@@ -1,0 +1,4 @@
+Hello Ditsa.
+
+Welcome to the RAG project.
+This is our first document loader.
