@@ -12,4 +12,5 @@ class Chunk:
     chunk_number: int = 0
     start_index: int = 0
     end_index: int = 0
+    embedding: list[float] | None = None
     metadata: dict[str, Any] = field(default_factory=dict)
