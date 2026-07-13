@@ -1,25 +1,28 @@
 from pathlib import Path
+from docx import Document as DocxDocument
 from backend.rag_engine.models.document import Document
 
 
-class TextLoader:
-    """
-    Loader responnsible for reading plain text (.txt) files.
-    """
-
+class DocxLoader:
     def load(self, file_path: str) -> list[Document]:
-        """
-        Read a text file and return a Document object.
-        """
         path = Path(file_path)
+        if not path.exists():
+            raise FileNotFoundError(f"{path} does not exist.")
 
-        text = path.read_text(encoding="utf-8", errors="ignore")
+        doc = DocxDocument(path)
+
+        paragraphs = [p.text.strip() for p in doc.paragraphs if p.text.strip()]
+
+        content = "\n".join(paragraphs)
 
         return [
             Document(
-                content=text,
+                content=content,
                 source=path.name,
-                file_type="txt",
-                metadata={"size": path.stat().st_size},
+                file_type="docx",
+                metadata={
+                    "paragraphs": len(paragraphs),
+                    "file_size": path.stat().st_size,
+                },
             )
         ]

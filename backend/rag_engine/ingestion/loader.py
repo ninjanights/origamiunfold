@@ -3,6 +3,13 @@ from pathlib import Path
 from backend.rag_engine.ingestion.txt_loader import TextLoader
 from backend.rag_engine.ingestion.pdf_loader import PdfLoader
 
+from backend.rag_engine.ingestion.docx_loader import DocxLoader
+from backend.rag_engine.ingestion.csv_loader import CsvLoader
+from backend.rag_engine.ingestion.excel_loader import ExcelLoader
+from backend.rag_engine.ingestion.json_loader import JsonLoader
+from backend.rag_engine.ingestion.markdown_loader import MarkdownLoader
+
+
 class DocumentLoader:
     """
     Main entry point for loading supported documents.
@@ -12,9 +19,15 @@ class DocumentLoader:
     def __init__(self):
         self.loaders = {
             ".txt": TextLoader(),
-            ".pdf": PdfLoader()
+            ".pdf": PdfLoader(),
+            "docx": DocxLoader(),
+            ".csv": CsvLoader(),
+            ".xlsx": ExcelLoader(),
+            ".xls": ExcelLoader(),
+            ".json": JsonLoader(),
+            ".md": MarkdownLoader(),
         }
-    
+
     def load(self, file_path: str):
         path = Path(file_path)
 
@@ -23,5 +36,5 @@ class DocumentLoader:
 
         if loader is None:
             raise ValueError(f"Unsupported file type: {extension}")
-        
+
         return loader.load(file_path)
