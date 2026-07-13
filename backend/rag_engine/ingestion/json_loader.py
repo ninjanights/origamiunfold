@@ -1,13 +1,12 @@
 from pathlib import Path
 import json
 from backend.rag_engine.models.document import Document
+from backend.rag_engine.ingestion.base_loader import BaseLoader
 
 
-class JsonLoader:
+class JsonLoader(BaseLoader):
     def load(self, file_path: str) -> list[Document]:
-        path = Path(file_path)
-        if not path.exists():
-            raise FileNotFoundError(f"{path} does not exist.")
+        path = self.validate(file_path)
 
         with open(path, encoding="utf-8") as file:
             data = json.load(file)

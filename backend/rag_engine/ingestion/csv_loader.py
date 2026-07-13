@@ -1,13 +1,12 @@
 from pathlib import Path
 import pandas as pd
 from backend.rag_engine.models.document import Document
+from backend.rag_engine.ingestion.base_loader import BaseLoader
 
 
-class CsvLoader:
+class CsvLoader(BaseLoader):
     def load(self, file_path: str) -> list[Document]:
-        path = Path(file_path)
-        if not path.exists():
-            raise FileNotFoundError(f"{path} does not exist.")
+        path = self.validate(file_path)
 
         df = pd.read_csv(path)
         documents = []

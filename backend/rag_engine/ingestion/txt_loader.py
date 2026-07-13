@@ -1,17 +1,12 @@
 from pathlib import Path
 from backend.rag_engine.models.document import Document
+from backend.rag_engine.ingestion.base_loader import BaseLoader
 
 
-class TextLoader:
-    """
-    Loader responnsible for reading plain text (.txt) files.
-    """
+class TextLoader(BaseLoader):
 
     def load(self, file_path: str) -> list[Document]:
-        """
-        Read a text file and return a Document object.
-        """
-        path = Path(file_path)
+        path = self.validate(file_path)
 
         text = path.read_text(encoding="utf-8", errors="ignore")
 

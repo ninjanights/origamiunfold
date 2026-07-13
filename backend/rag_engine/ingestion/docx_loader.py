@@ -1,13 +1,12 @@
 from pathlib import Path
 from docx import Document as DocxDocument
 from backend.rag_engine.models.document import Document
+from backend.rag_engine.ingestion.base_loader import BaseLoader
 
 
-class DocxLoader:
+class DocxLoader(BaseLoader):
     def load(self, file_path: str) -> list[Document]:
-        path = Path(file_path)
-        if not path.exists():
-            raise FileNotFoundError(f"{path} does not exist.")
+        path = self.validate(file_path)
 
         doc = DocxDocument(path)
 
