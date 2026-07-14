@@ -3,6 +3,7 @@ import json
 from backend.core.logger import logger
 from backend.rag_engine.models.chunk import Chunk
 from backend.rag_engine.vectorstore.base_vectorstore import BaseVectorStore
+from backend.rag_engine.retriever.filters import SearchFilters
 
 
 class ChromaStore(BaseVectorStore):
@@ -75,16 +76,38 @@ class ChromaStore(BaseVectorStore):
                 result[key] = value
         return result
 
-    def search(self, embedding: list[float], top_k: int = 3) -> list[Chunk]:
+    # Convert filters to Chroma format - Private
+    def _build_where(self, filters: SearchFilters | None) -> dict | None:
+        if filters is None:
+            return None
+        where = {}
+        if filters.source:
+            where["source"] = filters.source
+        if filters.file_type:
+            where["file_type"] = filters.file_type
+        if filters.page_number is not None:
+            where["page_number"] = filters.page_number
+        return where or None
+
+    # search inside chroma
+    def search(
+        self,
+        embedding: list[float],
+        top_k: int = 3,
+        filters: SearchFilters | None = None,
+    ) -> list[Chunk]:
 
         if not embedding:
             raise ValueError("Search embedding cannot be empty.")
 
         logger.info(f"Searching top {top_k} chunks...")
+
+        where = self._build_where(filters)
         result = self.collection.query(
             query_embeddings=[embedding],
             n_results=top_k,
-            include=["documents", "metadatas"],
+            where=where,
+            include=["documents", "metadatas", "distances"],
         )
 
         documents = result["documents"][0]
@@ -92,11 +115,10 @@ class ChromaStore(BaseVectorStore):
         ids = result["ids"][0]
 
         chunks: list[Chunk] = []
+        distances = result["distances"][0]
 
-        for chunk_id, document, metadata in zip(
-            ids,
-            documents,
-            metadatas,
+        for chunk_id, document, metadata, distance in zip(
+            ids, documents, metadatas, distances
         ):
             metadata = self._deserialize_metadata(metadata)
             chunks.append(
@@ -107,6 +129,7 @@ class ChromaStore(BaseVectorStore):
                     file_type=metadata.get("file_type", ""),
                     page_number=metadata.get("page_number"),
                     chunk_number=metadata.get("chunk_number", 0),
+                    score=distance,
                     metadata=self._extract_metadata(metadata),
                 )
             )

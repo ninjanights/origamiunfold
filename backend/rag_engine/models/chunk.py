@@ -13,4 +13,6 @@ class Chunk:
     start_index: int = 0
     end_index: int = 0
     embedding: list[float] | None = None
+    score: float | None = None
     metadata: dict[str, Any] = field(default_factory=dict)
+    

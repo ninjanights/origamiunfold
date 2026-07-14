@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from backend.rag_engine.models.chunk import Chunk
+from backend.rag_engine.retriever.filters import SearchFilters
 
 
 class BaseVectorStore:
@@ -11,6 +12,7 @@ class BaseVectorStore:
         self,
         embedding: list[float],
         top_k: int = 3,
+        filters: SearchFilters | None = None,
     ) -> list[Chunk]: ...
     @abstractmethod
     def delete(

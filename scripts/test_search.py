@@ -8,7 +8,6 @@ embedding = embedder.embed_text("what is python?")
 
 results = store.search(embedding, top_k=3)
 
-
 for chunk in results:
     print("=" * 80)
     print(f"ID           : {chunk.id}")
