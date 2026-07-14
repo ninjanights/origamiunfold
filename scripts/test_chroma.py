@@ -16,6 +16,6 @@ chunk = Chunk(
 
 chunk.embedding = embedder.embed_text(chunk.content)
 
-store.add([chunk])
-
+result = store.show_all()
+print(result)
 print("Inserted successfully!")
