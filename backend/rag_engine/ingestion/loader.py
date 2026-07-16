@@ -2,7 +2,6 @@ from pathlib import Path
 
 from backend.rag_engine.ingestion.txt_loader import TextLoader
 from backend.rag_engine.ingestion.pdf_loader import PdfLoader
-
 from backend.rag_engine.ingestion.docx_loader import DocxLoader
 from backend.rag_engine.ingestion.csv_loader import CsvLoader
 from backend.rag_engine.ingestion.excel_loader import ExcelLoader
@@ -20,7 +19,7 @@ class DocumentLoader:
         self.loaders = {
             ".txt": TextLoader(),
             ".pdf": PdfLoader(),
-            "docx": DocxLoader(),
+            ".docx": DocxLoader(),
             ".csv": CsvLoader(),
             ".xlsx": ExcelLoader(),
             ".xls": ExcelLoader(),
