@@ -1,5 +1,5 @@
-from backend.rag_engine.embeddings.bge_embedder import BGEEmbedder
-from backend.rag_engine.vectorstore.chroma_store import ChromaStore
+from rag_engine.embeddings.bge_embedder import BGEEmbedder
+from rag_engine.vectorstore.chroma_store import ChromaStore
 
 embedder = BGEEmbedder()
 store = ChromaStore()

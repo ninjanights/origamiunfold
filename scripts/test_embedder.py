@@ -1,5 +1,5 @@
-from backend.rag_engine.embeddings.bge_embedder import BGEEmbedder
-from backend.rag_engine.models.chunk import Chunk
+from rag_engine.embeddings.bge_embedder import BGEEmbedder
+from rag_engine.models.chunk import Chunk
 
 chunks = [
     Chunk(

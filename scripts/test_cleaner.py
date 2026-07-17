@@ -1,4 +1,4 @@
-from backend.rag_engine.preprocessing.normalizer import Normalizer
+from rag_engine.preprocessing.normalizer import Normalizer
 
 normalizer = Normalizer()
 

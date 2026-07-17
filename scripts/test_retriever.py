@@ -1,7 +1,7 @@
-from backend.rag_engine.embeddings.bge_embedder import BGEEmbedder
-from backend.rag_engine.retriever.retriever import Retriever
-from backend.rag_engine.vectorstore.chroma_store import ChromaStore
-from backend.rag_engine.retriever.filters import SearchFilters
+from rag_engine.embeddings.bge_embedder import BGEEmbedder
+from rag_engine.retriever.retriever import Retriever
+from rag_engine.vectorstore.chroma_store import ChromaStore
+from rag_engine.retriever.filters import SearchFilters
 
 embedder = BGEEmbedder()
 store = ChromaStore()

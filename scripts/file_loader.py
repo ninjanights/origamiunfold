@@ -1,4 +1,4 @@
-from backend.rag_engine.ingestion.loader import DocumentLoader
+from rag_engine.ingestion.loader import DocumentLoader
 
 loader = DocumentLoader()
 

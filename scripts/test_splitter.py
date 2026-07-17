@@ -1,4 +1,4 @@
-from backend.rag_engine.chunking.splitter import Splitter
+from rag_engine.chunking.splitter import Splitter
 
 
 text = """

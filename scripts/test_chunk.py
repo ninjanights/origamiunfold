@@ -1,4 +1,4 @@
-from backend.rag_engine.models.chunk import Chunk
+from rag_engine.models.chunk import Chunk
 
 chunk = Chunk(
     id="chunk_1",

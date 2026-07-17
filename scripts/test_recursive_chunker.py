@@ -1,19 +1,13 @@
-from backend.rag_engine.chunking.recursive_chunker import RecursiveChunker
-from backend.rag_engine.models.document import Document
+from rag_engine.chunking.recursive_chunker import RecursiveChunker
+from rag_engine.models.document import Document
 
 doc = Document(
     content="""
-    
-    This is paragraph one.
-
+This is paragraph one.
 This is paragraph two. It contains multiple sentences.
 This is another sentence.
-
 This is paragraph three.
-    
-    
-    
-    """,
+""",
     source="sample.txt",
     file_type="txt",
 )
