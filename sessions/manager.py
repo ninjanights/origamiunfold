@@ -13,7 +13,7 @@ from sessions.session_model import SessionModel
 
 class SessionManager:
     def __init__(self):
-        self.base_path = Path("./backend/sessions/workspaces")
+        self.base_path = Path("sessions/workspaces")
         self.base_path.mkdir(parents=True, exist_ok=True)
 
     # assign a new identity
