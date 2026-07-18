@@ -8,6 +8,8 @@ from datetime import (
     timedelta,
 )
 
+from sessions.session_model import SessionModel
+
 
 class SessionManager:
     def __init__(self):
@@ -15,14 +17,32 @@ class SessionManager:
         self.base_path.mkdir(parents=True, exist_ok=True)
 
     # assign a new identity
-    def create_session(self) -> str:
+    def create_session(self) -> SessionModel:
         session_id = str(uuid.uuid4())
         workspace = self.base_path / session_id
         (workspace / "uploads").mkdir(parents=True)
         (workspace / "chroma").mkdir(parents=True)
+        logger.info(f"Created session: {session_id}")
+
+        now = datetime.now()
+
+        session_data = {
+            "session_id": session_id,
+            "created_at": now.isoformat(),
+            "last_access": now.isoformat(),
+        }
+
+        with open(workspace / "metadata.json", "w") as file:
+            json.dump(session_data, file, indent=4)
 
         logger.info(f"Created session: {session_id}")
-        return session_id
+
+        return SessionModel(
+            session_id=session_id,
+            workspace=workspace,
+            created_at=now,
+            last_access=now,
+        )
 
     # find the identity with session id
     def get_workspace(
@@ -53,10 +73,15 @@ class SessionManager:
     ) -> None:
         workspace = self.get_workspace(session_id)
         metadata = workspace / "metadata.json"
-        data = {
-            "session_id": session_id,
-            "last_access": datetime.now().isoformat(),
-        }
+
+        data = json.loads(
+            metadata.read_text(
+                encoding="utf-8",
+            )
+        )
+
+        data["last_access"] = datetime.now().isoformat()
+
         metadata.write_text(
             json.dumps(data, indent=4),
             encoding="utf-8",
@@ -64,7 +89,7 @@ class SessionManager:
         logger.info(f"Updated session: {session_id}")
 
     # check last_access and sees it has expired in time, so backend can delete the instance
-    def expired(
+    def is_expired(
         self,
         session_id: str,
         timeout_minutes: int = 30,
@@ -79,3 +104,22 @@ class SessionManager:
         last_access = datetime.fromisoformat(data["last_access"])
         now = datetime.now()
         return now - last_access > timedelta(minutes=timeout_minutes)
+
+    # clean up the is_expired sessions
+    def cleanup_expired_session(
+        self,
+        timeout_minutes: int = 30,
+    ) -> None:
+        for workspace in self.base_path.iterdir():
+            if not workspace.is_dir():
+                continue
+            session_id = workspace.name
+
+            try:
+                if self.is_expired(
+                    session_id,
+                    timeout_minutes,
+                ):
+                    self.delete_session(session_id)
+            except Exception as error:
+                logger.error(f"Failed cleaning session {session_id}: {error}")
