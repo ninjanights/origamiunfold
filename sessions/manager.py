@@ -14,7 +14,7 @@ class SessionManager:
         self.base_path = Path("./backend/sessions/workspaces")
         self.base_path.mkdir(parents=True, exist_ok=True)
 
-    # assign a new user
+    # assign a new identity
     def create_session(self) -> str:
         session_id = str(uuid.uuid4())
         workspace = self.base_path / session_id
@@ -24,7 +24,7 @@ class SessionManager:
         logger.info(f"Created session: {session_id}")
         return session_id
 
-    # find the user with session id
+    # find the identity with session id
     def get_workspace(
         self,
         session_id: str,
@@ -37,7 +37,7 @@ class SessionManager:
 
         return workspace
 
-    # recursively delete folders of the user after inactivity
+    # recursively delete folders of the identity after inactivity
     def delete_session(
         self,
         session_id: str,
@@ -46,7 +46,7 @@ class SessionManager:
         shutil.rmtree(workspace)
         logger.info(f"Deleted session: {session_id}")
 
-    # touch / redeclear time cause user has interacted
+    # touch / redeclear time cause identity has interacted
     def touch_session(
         self,
         session_id: str,
@@ -63,7 +63,7 @@ class SessionManager:
         )
         logger.info(f"Updated session: {session_id}")
 
-    # check last_access and sees it as espired so backend can delete the user's content
+    # check last_access and sees it has expired in time, so backend can delete the instance
     def expired(
         self,
         session_id: str,
