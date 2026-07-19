@@ -9,15 +9,15 @@ class AnswerService:
         self.retriever = RetrievalService()
         self.prompt_builder = PromptBuilder()
         self.llm = ModelRegistry.llm_model()
-        
+
     def answer(
         self,
         question: str,
-        session: SessionModel,
+        session_id: SessionModel,
     ) -> str:
         chunks = self.retriever.retrieve(
             question=question,
-            session=session,
+            session=session_id,
         )
         prompt = self.prompt_builder.build(
             question=question,
@@ -26,4 +26,13 @@ class AnswerService:
 
         response = self.llm.generate(prompt)
 
-        return response
+        sources = []
+        for chunk in chunks:
+            sources.append(
+                {
+                    "file": chunk.source,
+                    "page": chunk.page_number,
+                    "chunk": chunk.chunk_number,
+                }
+            )
+        return {"answer": response, "sources": sources}

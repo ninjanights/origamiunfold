@@ -7,12 +7,10 @@ from services.indexing_service import IndexingService
 
 class UploadService:
     def __init__(self):
-        self.session_manager = SessionManager()
         self.indexing_service = IndexingService()
 
-    def upload(self, uploaded_file):
+    def upload(self, uploaded_file, session: SessionModel):
         # save in file path
-        session : SessionModel = self.session_manager.create_session()
         destination = session.workspace / "uploads" / uploaded_file.name
 
         # inbuilt django chunks so a huge file gets broken into parts
