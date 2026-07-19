@@ -1,5 +1,5 @@
 import api from "./axios";
-import type { UploadResponse } from "@/types/upload";
+import type { UploadResponse, WorkspaceFile } from "@/types/upload";
 import type { AskRequest, AskResponse } from "@/types/chat";
 
 export async function uploadFile(file: File): Promise<UploadResponse> {
@@ -12,6 +12,11 @@ export async function uploadFile(file: File): Promise<UploadResponse> {
     },
   });
 
+  return response.data;
+}
+
+export async function getFiles(): Promise<WorkspaceFile[]> {
+  const response = await api.get<WorkspaceFile[]>(`/files/`);
   return response.data;
 }
 

@@ -14,10 +14,10 @@ class AnswerService:
         self,
         question: str,
         session_id: SessionModel,
+        source,
     ) -> str:
         chunks = self.retriever.retrieve(
-            question=question,
-            session=session_id,
+            question=question, session=session_id, source=source
         )
         prompt = self.prompt_builder.build(
             question=question,

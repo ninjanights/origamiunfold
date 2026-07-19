@@ -79,19 +79,55 @@ class ChromaStore(BaseVectorStore):
         return result
 
     # Convert filters to Chroma format - Private
-    def _build_where(self, filters: SearchFilters | None) -> dict | None:
+    def _build_where(
+        self,
+        filters: SearchFilters | None,
+    ) -> dict | None:
+
         if filters is None:
             return None
-        where = {}
-        if filters.source:
-            where["source"] = filters.source
-        if filters.file_type:
-            where["file_type"] = filters.file_type
-        if filters.page_number is not None:
-            where["page_number"] = filters.page_number
+
+        conditions = []
+
         if filters.session_id:
-            where["session_id"] = filters.session_id
-        return where or None
+            conditions.append(
+                {
+                    "session_id": filters.session_id,
+                }
+            )
+
+        if filters.sources:
+            conditions.append(
+                {
+                    "source": {
+                        "$in": filters.sources,
+                    }
+                }
+            )
+
+        if filters.file_type:
+            conditions.append(
+                {
+                    "file_type": filters.file_type,
+                }
+            )
+
+        if filters.page_number is not None:
+            conditions.append(
+                {
+                    "page_number": filters.page_number,
+                }
+            )
+
+        if not conditions:
+            return None
+
+        if len(conditions) == 1:
+            return conditions[0]
+
+        return {
+            "$and": conditions,
+        }
 
     # search inside chroma
     def search(

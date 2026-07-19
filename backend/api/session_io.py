@@ -5,7 +5,6 @@ from sessions.session_model import SessionModel
 
 
 class SessionService:
-
     COOKIE_NAME = "origami_session"
     COOKIE_AGE = 60 * 60 * 24  # 24 Hours
 
@@ -54,7 +53,10 @@ class SessionService:
         if session_id is None:
             raise FileNotFoundError("No active session.")
 
-        session = self.session_manager.get_session(session_id)
+        try:
+            session = self.session_manager.get_session(session_id)
+        except FileNotFoundError as error:
+            raise FileNotFoundError("Session expired.") from error
 
         if self.session_manager.is_expired(
             session.session_id,

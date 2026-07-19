@@ -10,18 +10,21 @@ class RetrievalService:
         self.embedder = BGEEmbedder()
         self.vector_store = ChromaStore()
 
-    def retrieve(self, 
-                 question: str, 
-                 session: SessionModel, 
-                 top_k: int = 3):
+    def retrieve(
+        self,
+        question: str,
+        session: SessionModel,
+        top_k: int = 3,
+        sources: list[str] | None = None,
+    ):
         query_embedding = self.embedder.embed_text(question)
 
         chunks = self.vector_store.search(
             embedding=query_embedding,
             filters=SearchFilters(
                 session_id=session.session_id,
+                sources=sources,
             ),
             top_k=top_k,
-
         )
         return chunks

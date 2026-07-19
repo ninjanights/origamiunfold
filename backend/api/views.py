@@ -3,18 +3,19 @@ from rest_framework.decorators import api_view, parser_classes
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from rest_framework import status
-from session_io import SessionService
+from .session_io import SessionService
 
 from api.serializers import ChatSerializer
 from rag_engine.generator.answer_service import AnswerService
 from sessions.manager import SessionManager
-
+from services.file_service import FileService
 from services.upload_service import UploadService
 
 upload_service = UploadService()
 answer_service = AnswerService()
 session_manager = SessionManager()
 session_service = SessionService()
+file_service = FileService()
 
 
 @api_view(["POST"])
@@ -71,6 +72,31 @@ def chat(request):
     )
 
     response = Response(result)
+
+    session_service.refresh_session(
+        response,
+        session,
+    )
+
+    return response
+
+
+@api_view(["GET"])
+def files(request):
+    if request.COOKIES.get(session_service.COOKIE_NAME) is None:
+        return Response([])
+
+    try:
+        session = session_service.get_active_session(request)
+    except FileNotFoundError as error:
+        return Response(
+            {"error": "Session expired." if str(error) == "Session expired." else str(error)},
+            status=status.HTTP_401_UNAUTHORIZED,
+        )
+
+    files = file_service.list_files(session)
+
+    response = Response(files)
 
     session_service.refresh_session(
         response,
