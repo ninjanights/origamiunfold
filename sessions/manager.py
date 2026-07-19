@@ -1,6 +1,7 @@
 from pathlib import Path
 import shutil
 import uuid
+from uuid import UUID
 from core.logger import logger
 import json
 from datetime import (
@@ -42,6 +43,26 @@ class SessionManager:
             workspace=workspace,
             created_at=now,
             last_access=now,
+        )
+
+    def get_session(
+        self,
+        session_id: str | UUID,
+    ) -> SessionModel:
+        workspace = self.get_workspace(str(session_id))
+        metadata = workspace / "metadata.json"
+
+        data = json.loads(
+            metadata.read_text(
+                encoding="utf-8",
+            )
+        )
+
+        return SessionModel(
+            session_id=data["session_id"],
+            workspace=workspace,
+            created_at=datetime.fromisoformat(data["created_at"]),
+            last_access=datetime.fromisoformat(data["last_access"]),
         )
 
     # find the identity with session id

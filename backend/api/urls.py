@@ -8,4 +8,10 @@ urlpatterns = [
         views.upload,
         name="upload",
     ),
+     
+     path(
+        "chat/",
+        views.chat,
+        name="chat",
+    ),
 ]

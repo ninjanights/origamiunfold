@@ -22,6 +22,7 @@ class ChromaStore(BaseVectorStore):
             "file_type": chunk.file_type,
             "page_number": chunk.page_number or 0,
             "chunk_number": chunk.chunk_number,
+            "session_id": chunk.session_id,
         }
 
         for key, value in chunk.metadata.items():
@@ -61,6 +62,7 @@ class ChromaStore(BaseVectorStore):
             "file_type",
             "page_number",
             "chunk_number",
+            "session_id",
         }
         return {key: value for key, value in metadata.items() if key not in reserved}
 
@@ -87,6 +89,8 @@ class ChromaStore(BaseVectorStore):
             where["file_type"] = filters.file_type
         if filters.page_number is not None:
             where["page_number"] = filters.page_number
+        if filters.session_id:
+            where["session_id"] = filters.session_id
         return where or None
 
     # search inside chroma
@@ -129,6 +133,7 @@ class ChromaStore(BaseVectorStore):
                     file_type=metadata.get("file_type", ""),
                     page_number=metadata.get("page_number"),
                     chunk_number=metadata.get("chunk_number", 0),
+                    session_id=metadata.get("session_id"),
                     score=distance,
                     metadata=self._extract_metadata(metadata),
                 )
@@ -143,11 +148,8 @@ class ChromaStore(BaseVectorStore):
         self.collection.delete(ids=ids)
 
     def clear(self):
-
         self.client.delete_collection(self.collection.name)
-
         self.collection = self.client.get_or_create_collection(self.collection.name)
-
         logger.info("Collection cleared.")
 
     def show_all(self):

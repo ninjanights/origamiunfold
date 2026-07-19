@@ -10,6 +10,7 @@ class Chunk:
     file_type: str
     page_number: int | None = None
     chunk_number: int = 0
+    session_id: str | None = None
     start_index: int = 0
     end_index: int = 0
     embedding: list[float] | None = None

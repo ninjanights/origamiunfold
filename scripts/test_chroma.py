@@ -1,21 +1,17 @@
-from uuid import uuid4
+import chromadb
 
-from rag_engine.embeddings.bge_embedder import BGEEmbedder
-from rag_engine.models.chunk import Chunk
-from rag_engine.vectorstore.chroma_store import ChromaStore
-
-embedder = BGEEmbedder()
-store = ChromaStore()
-
-chunk = Chunk(
-    id=str(uuid4()),
-    content="Python is an amazing programming language.",
-    source="sample.txt",
-    file_type="txt",
+client = chromadb.PersistentClient(
+    path="./storage/chroma"
 )
 
-chunk.embedding = embedder.embed_text(chunk.content)
+collection = client.get_collection(
+    "origamidocuments"
+)
 
-result = store.show_all()
-print(result)
-print("Inserted successfully!")
+print("Total documents:", collection.count())
+
+data = collection.get(
+    limit=3
+)
+
+print(data)
