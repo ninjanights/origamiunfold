@@ -15,8 +15,11 @@ class UploadService:
 
         # inbuilt django chunks so a huge file gets broken into parts
         with open(destination, "wb") as file:
-            for chunk in uploaded_file.chunks():
-                file.write(chunk)
+            if hasattr(uploaded_file, "chunks"):
+                for chunk in uploaded_file.chunks():
+                    file.write(chunk)
+                else:
+                    file.write(uploaded_file.read())
 
         # 4. Store in Chroma
         self.indexing_service.index(

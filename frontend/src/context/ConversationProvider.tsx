@@ -43,16 +43,27 @@ export default function ConversationProvider({
     const request = window.indexedDB.open("origami-unfold", 1);
 
     request.onupgradeneeded = () => {
-      request.result.createObjectStore("conversation");
+      const db = request.result;
+
+      if (!db.objectStoreNames.contains("conversation")) {
+        db.createObjectStore("conversation");
+      }
+
+      if (!db.objectStoreNames.contains("metadata")) {
+        db.createObjectStore("metadata");
+      }
     };
 
     request.onsuccess = () => {
       const database = request.result;
       const transaction = database.transaction("conversation", "readonly");
-      const savedMessages = transaction.objectStore("conversation").get("messages");
+      const savedMessages = transaction
+        .objectStore("conversation")
+        .get("messages");
 
       savedMessages.onsuccess = () => {
-        if (Array.isArray(savedMessages.result)) setMessages(savedMessages.result);
+        if (Array.isArray(savedMessages.result))
+          setMessages(savedMessages.result);
         setIsHydrated(true);
         database.close();
       };
@@ -110,7 +121,9 @@ export default function ConversationProvider({
 
   const deleteConversation = (questionId: string) => {
     setMessages((current) => {
-      const questionIndex = current.findIndex((message) => message.id === questionId);
+      const questionIndex = current.findIndex(
+        (message) => message.id === questionId,
+      );
 
       if (questionIndex === -1) return current;
 
@@ -118,7 +131,9 @@ export default function ConversationProvider({
       const deleteAnswer = nextMessage?.role === "Fox";
 
       return current.filter(
-        (_, index) => index !== questionIndex && (!deleteAnswer || index !== questionIndex + 1),
+        (_, index) =>
+          index !== questionIndex &&
+          (!deleteAnswer || index !== questionIndex + 1),
       );
     });
   };

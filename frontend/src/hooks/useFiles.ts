@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { getFiles } from "@/services/api";
+import { getFiles, loadDemo } from "@/services/api";
 import type { WorkspaceFile } from "@/types/upload";
 
 export function useFiles() {
@@ -12,7 +12,14 @@ export function useFiles() {
     try {
       setLoading(true);
       const workspaceFiles = await getFiles();
-      setFiles(workspaceFiles);
+      if (workspaceFiles.length === 0) {
+        await loadDemo();
+        const demoFiles = await getFiles();
+
+        setFiles(demoFiles);
+      } else {
+        setFiles(workspaceFiles);
+      }
     } catch (error) {
       console.error(error);
       setFiles([]);

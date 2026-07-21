@@ -12,6 +12,11 @@ from sessions.manager import SessionManager
 from services.file_service import FileService
 from services.upload_service import UploadService
 from django.utils.timezone import now
+from pathlib import Path
+from django.core.files.uploadedfile import SimpleUploadedFile
+
+from django.conf import settings
+
 
 upload_service = UploadService()
 answer_service = AnswerService()
@@ -21,7 +26,7 @@ file_service = FileService()
 
 
 @api_view(["GET"])
-def status(request):
+def health(request):
     return Response(
         {
             "status": "active",
@@ -30,8 +35,6 @@ def status(request):
             "time": now().isoformat(),
         }
     )
-
-
 
 
 @api_view(["POST"])
@@ -61,12 +64,32 @@ def upload(request):
         status=status.HTTP_201_CREATED,
     )
 
-    session_service.refresh_session(
-        response,
-        session,
+    return attach_session(response, session)
+
+
+@api_view(["POST"])
+def load_demo(request):
+    session = session_service.get_or_create_session(request)
+
+    demo_folder = Path(settings.BASE_DIR) / "demo_documents"
+    for path in demo_folder.iterdir():
+        if not path.is_file():
+            continue
+
+        with open(path, "rb") as f:
+            uploaded_file = SimpleUploadedFile(
+                name=path.name,
+                content=f.read(),
+            )
+
+            upload_service.upload(uploaded_file, session)
+
+    response = Response(
+        {"message": "Demo workspace loaded."},
+        status=status.HTTP_200_OK,
     )
 
-    return response
+    return attach_session(response, session)
 
 
 @api_view(["POST"])
@@ -76,12 +99,10 @@ def chat(request):
 
     try:
         session = session_service.get_active_session(request)
-    except FileNotFoundError as error:
-        return Response(
-            {"error": str(error)},
-            status=status.HTTP_401_UNAUTHORIZED,
-        )
-
+    except FileNotFoundError:
+        session = session_service.get_or_create_session(request)
+        response = Response([])
+        return attach_session(response, session)
     try:
         result = answer_service.answer(
             question=serializer.validated_data["question"],
@@ -95,10 +116,12 @@ def chat(request):
         )
 
     response = Response(result)
-    session_service.refresh_session(
-        response,
-        session_id,
-    )
+    return attach_session(response, session)
+
+
+def attach_session(response: Response, session: str) -> Response:
+    response["X-Session-ID"] = session
+    session_service.refresh_session(response, session)
     return response
 
 
@@ -109,28 +132,16 @@ def files(request):
 
     try:
         session = session_service.get_active_session(request)
-    except FileNotFoundError as error:
-        return Response(
-            {
-                "error": (
-                    "Session expired."
-                    if str(error) == "Session expired."
-                    else str(error)
-                )
-            },
-            status=status.HTTP_401_UNAUTHORIZED,
-        )
+    except FileNotFoundError:
+        session = session_service.get_or_create_session(request)
+
+        response = Response([])
+        return attach_session(response, session)
 
     files = file_service.list_files(session)
 
     response = Response(files)
-
-    session_service.refresh_session(
-        response,
-        session,
-    )
-
-    return response
+    return attach_session(response, session)
 
 
 @api_view(["DELETE"])
@@ -152,13 +163,7 @@ def delete_files(request):
     )
 
     response = Response(result)
-
-    session_service.refresh_session(
-        response,
-        session,
-    )
-
-    return response
+    return attach_session(response, session)
 
 
 @api_view(["DELETE"])
@@ -181,9 +186,4 @@ def delete_all(request):
         status=status.HTTP_200_OK,
     )
 
-    session_service.refresh_session(
-        response,
-        session,
-    )
-
-    return response
+    return attach_session(response, session)

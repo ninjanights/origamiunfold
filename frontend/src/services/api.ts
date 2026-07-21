@@ -5,7 +5,7 @@ import type { BackendStatus } from "@/types/status";
 
 
 export async function getBackendStatus(): Promise<BackendStatus> {
-  const response = await api.get("/status/");
+  const response = await api.get("/health/");
   return response.data;
 }
 
@@ -13,7 +13,6 @@ export async function getBackendStatus(): Promise<BackendStatus> {
 export async function uploadFile(file: File): Promise<UploadResponse> {
   const formData = new FormData();
   formData.append("file", file);
-
   const response = await api.post<UploadResponse>(`/upload/`, formData, {
     headers: {
       "Content-Type": "multipart/form-data",
@@ -25,6 +24,11 @@ export async function uploadFile(file: File): Promise<UploadResponse> {
 
 export async function getFiles(): Promise<WorkspaceFile[]> {
   const response = await api.get<WorkspaceFile[]>(`/files/`);
+  return response.data;
+}
+
+export async function loadDemo(): Promise<{ message: string }> {
+  const response = await api.post("/demo/load/");
   return response.data;
 }
 

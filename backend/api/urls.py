@@ -3,7 +3,8 @@ from api import views
 
 urlpatterns = [
     
-    path("status/", views.status),
+    path("health/", views.health),
+    path("demo/load/", views.load_demo),
     path(
         "upload/",
         views.upload,
