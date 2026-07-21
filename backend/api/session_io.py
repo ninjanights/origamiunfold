@@ -2,11 +2,12 @@ from rest_framework.response import Response
 
 from sessions.manager import SessionManager
 from sessions.session_model import SessionModel
+from core.config import Settings
 
 
 class SessionService:
     COOKIE_NAME = "origami_session"
-    COOKIE_AGE = 60 * 60 * 24  # 24 Hours
+    COOKIE_AGE = Settings.SESSION_TIMEOUT * 60  # 24 Hours
 
     def __init__(self):
         self.session_manager = SessionManager()
@@ -26,7 +27,7 @@ class SessionService:
 
                 if self.session_manager.is_expired(
                     session.session_id,
-                    timeout_minutes=60 * 24,
+                    timeout_minutes=Settings.SESSION_TIMEOUT,
                 ):
                     self.session_manager.delete_session(
                         session.session_id,
@@ -60,12 +61,12 @@ class SessionService:
 
         if self.session_manager.is_expired(
             session.session_id,
-            timeout_minutes=60 * 24,
+            timeout_minutes=Settings.SESSION_TIMEOUT,
         ):
             self.session_manager.delete_session(
                 session.session_id,
             )
-            raise FileNotFoundError("Session expired.")
+            session = self.session_manager.create_session()
 
         return session
 
@@ -84,7 +85,7 @@ class SessionService:
             key=self.COOKIE_NAME,
             value=session.session_id,
             max_age=self.COOKIE_AGE,
-            httponly=True,
+            httponly=False,
             samesite="Lax",
             secure=False,  # True in production
         )

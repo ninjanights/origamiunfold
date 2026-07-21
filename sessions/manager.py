@@ -11,6 +11,8 @@ from datetime import (
 
 from sessions.session_model import SessionModel
 
+from core.config import Settings
+
 
 class SessionManager:
     def __init__(self):
@@ -129,8 +131,13 @@ class SessionManager:
     # clean up the is_expired sessions
     def cleanup_expired_session(
         self,
-        timeout_minutes: int = 30,
     ) -> None:
+
+        timeout_minutes: int = (Settings.SESSION_TIMEOUT)
+
+        logger.info("Running session cleanup...")
+
+        removed = 0
         for workspace in self.base_path.iterdir():
             if not workspace.is_dir():
                 continue
@@ -142,5 +149,8 @@ class SessionManager:
                     timeout_minutes,
                 ):
                     self.delete_session(session_id)
+                    removed += 1
             except Exception as error:
                 logger.error(f"Failed cleaning session {session_id}: {error}")
+
+        logger.info(f"Cleanup complete. Removed {removed} sessions.")

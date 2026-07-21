@@ -1,7 +1,7 @@
 export interface Source {
     file: string;
     page: number;
-    chunk: number;
+    chunk?: number;
 }
 
 export interface AskRequest {

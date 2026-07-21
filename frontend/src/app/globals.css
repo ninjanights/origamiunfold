@@ -11,11 +11,6 @@
     min-height: 100vh;
     background: #ffffff;
     color: #262626;
-    scrollbar-width: none;
-  }
-
-  body::-webkit-scrollbar {
-    display: none;
   }
 
   html.dark {
@@ -36,4 +31,21 @@
   .scrollbar-none::-webkit-scrollbar {
     display: none;
   }
+}
+
+
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+}
+
+.animate-breathe {
+  animation: breathe 2.2s ease-in-out infinite;
 }

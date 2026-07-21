@@ -177,11 +177,11 @@ class ChromaStore(BaseVectorStore):
         logger.info(f"Retrieved {len(chunks)} chunks.")
         return chunks
 
-    def delete(
-        self,
-        ids: list[str],
-    ):
-        self.collection.delete(ids=ids)
+    # def delete(
+    #     self,
+    #     ids: list[str],
+    # ):
+    #     self.collection.delete(ids=ids)
 
     def clear(self):
         self.client.delete_collection(self.collection.name)
@@ -196,3 +196,57 @@ class ChromaStore(BaseVectorStore):
                 "embeddings",
             ]
         )
+
+    # Delete selected files
+    def delete_by_source(
+        self,
+        session_id: str,
+        sources: list[str],
+    ):
+        if not sources:
+            return
+
+        self.collection.delete(
+            where={
+                "$and": [
+                    {
+                        "session_id": session_id,
+                    },
+                    {
+                        "source": {
+                            "$in": sources,
+                        },
+                    },
+                ]
+            }
+        )
+
+        logger.info(
+            f"Deleted vectors for {len(sources)} file(s) from session {session_id}."
+        )
+
+    # Delete every vector belonging to one session
+    def delete_session(
+        self,
+        session_id: str,
+    ):
+        self.collection.delete(
+            where={
+                "session_id": session_id,
+            }
+        )
+
+        logger.info(f"Deleted all vectors for session {session_id}.")
+
+    # Completely wipe the collection
+    # (Admin / Cron job / Development)
+    def delete_all(self):
+        self.client.delete_collection(
+            self.collection.name,
+        )
+
+        self.collection = self.client.get_or_create_collection(
+            self.collection.name,
+        )
+
+        logger.info("Deleted every vector in the collection.")
