@@ -7,9 +7,4 @@ class ApiConfig(AppConfig):
     name = "api"
 
     def ready(self):
-        if os.environ.get("RUN_MAIN") != "true":
-            return
-
-        from scheduler import start_scheduler
-
-        start_scheduler()
+        return
