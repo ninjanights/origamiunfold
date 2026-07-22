@@ -6,10 +6,24 @@ import time
 
 
 class AnswerService:
-    def __init__(self):
-        self.retriever = RetrievalService()
-        self.prompt_builder = PromptBuilder()
-        self.llm = ModelRegistry.llm_model()
+
+    @property
+    def retriever(self):
+        if not hasattr(self, "_retriever"):
+            self._retriever = RetrievalService()
+        return self._retriever
+
+    @property
+    def prompt_builder(self):
+        if not hasattr(self, "_prompt_builder"):
+            self._prompt_builder = PromptBuilder()
+        return self._prompt_builder
+
+    @property
+    def llm(self):
+        if not hasattr(self, "_llm"):
+            self._llm = ModelRegistry.llm_model()
+        return self._llm
 
     def answer(
         self,

@@ -8,17 +8,17 @@ from rag_engine.reranking.base_reranker import BaseReranker
 class BGEReranker(BaseReranker):
     _model = None
 
-    def __init__(
-        self,
-        model_name: str = "BAAI/bge-reranker-base",
-    ):
-        if BGEReranker._model is None:
-            logger.info(f"Loading reranker: {model_name}")
+    @classmethod
+    def get_model(cls):
+        if cls._model is None:
+            logger.info("Loading BGE Reranker...")
+            cls._model = CrossEncoder("BAAI/bge-reranker-base")
 
-            BGEReranker._model = CrossEncoder(model_name)
-        self.model = BGEReranker._model
+        return cls._model
 
-    # rerank fn
+    @property
+    def model(self):
+        return self.get_model()
 
     def rerank(self, query: str, chunks: list[Chunk], top_k: int) -> list[Chunk]:
         if not chunks:
@@ -32,7 +32,7 @@ class BGEReranker(BaseReranker):
             chunk.score = float(score)
 
         chunks.sort(
-            key=lambda chunk: chunk.score,
+            key=lambda c: c.score,
             reverse=True,
         )
 

@@ -14,33 +14,45 @@ from sessions.session_model import SessionModel
 
 
 class IndexingService:
-    def __init__(self):
-        self.loader = DocumentLoader()
-        self.cleaner = Cleaner()
-        self.normalizer = Normalizer()
-        self.duplicate_remover = Deduplicator()
-        self.chunker = RecursiveChunker()
-        self.embedder = BGEEmbedder()
-        self.vector_store = ChromaStore()
 
-    def index(self, file_path: Path, session: SessionModel) -> None:
+    @property
+    def loader(self):
+        if not hasattr(self, "_loader"):
+            self._loader = DocumentLoader()
+        return self._loader
 
-        documents = self.loader.load(file_path)
-        all_chunks = []
-        for doc in documents:
+    @property
+    def cleaner(self):
+        if not hasattr(self, "_cleaner"):
+            self._cleaner = Cleaner()
+        return self._cleaner
 
-            doc.content = self.cleaner.clean(doc.content)
-            doc.content = self.normalizer.normalize(doc.content)
-            doc.content = self.duplicate_remover.remove_duplicates(doc.content)
-            chunks = self.chunker.chunk(doc)
+    @property
+    def normalizer(self):
+        if not hasattr(self, "_normalizer"):
+            self._normalizer = Normalizer()
+        return self._normalizer
 
-            for chunk in chunks:
-                chunk.session_id = session.session_id
-            all_chunks.extend(chunks)
+    @property
+    def duplicate_remover(self):
+        if not hasattr(self, "_duplicate_remover"):
+            self._duplicate_remover = Deduplicator()
+        return self._duplicate_remover
 
-        embeddings = self.embedder.embed_chunks(all_chunks)
-        for chunk, embedding in zip(all_chunks, embeddings):
-            chunk.embedding = embedding
+    @property
+    def chunker(self):
+        if not hasattr(self, "_chunker"):
+            self._chunker = RecursiveChunker()
+        return self._chunker
 
-        self.vector_store.add(all_chunks)
-        logger.info(f"Chunks created: {len(all_chunks)}")
+    @property
+    def embedder(self):
+        if not hasattr(self, "_embedder"):
+            self._embedder = BGEEmbedder()
+        return self._embedder
+
+    @property
+    def vector_store(self):
+        if not hasattr(self, "_vector_store"):
+            self._vector_store = ChromaStore()
+        return self._vector_store

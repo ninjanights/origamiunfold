@@ -6,8 +6,12 @@ from services.indexing_service import IndexingService
 
 
 class UploadService:
-    def __init__(self):
-        self.indexing_service = IndexingService()
+
+    @property
+    def indexing_service(self):
+        if not hasattr(self, "_indexing_service"):
+            self._indexing_service = IndexingService()
+        return self._indexing_service
 
     def upload(self, uploaded_file, session: SessionModel):
         # save in file path

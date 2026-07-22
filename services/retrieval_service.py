@@ -6,9 +6,18 @@ from rag_engine.retriever.filters import SearchFilters
 
 
 class RetrievalService:
-    def __init__(self):
-        self.embedder = BGEEmbedder()
-        self.vector_store = ChromaStore()
+
+    @property
+    def embedder(self):
+        if not hasattr(self, "_embedder"):
+            self._embedder = BGEEmbedder()
+        return self._embedder
+
+    @property
+    def vector_store(self):
+        if not hasattr(self, "_vector_store"):
+            self._vector_store = ChromaStore()
+        return self._vector_store
 
     def retrieve(
         self,
@@ -19,7 +28,7 @@ class RetrievalService:
     ):
         query_embedding = self.embedder.embed_text(question)
 
-        chunks = self.vector_store.search(
+        return self.vector_store.search(
             embedding=query_embedding,
             filters=SearchFilters(
                 session_id=session.session_id,
@@ -27,4 +36,3 @@ class RetrievalService:
             ),
             top_k=top_k,
         )
-        return chunks

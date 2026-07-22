@@ -1,12 +1,13 @@
-from core.model_registry import ModelRegistry
+# from core.model_registry import ModelRegistry
 from rag_engine.embeddings.base_embedder import BaseEmbedder
 from rag_engine.models.chunk import Chunk
-
+# from sentence_transformers import SentenceTransformer
+from core.model_registry import ModelRegistry
 
 class BGEEmbedder(BaseEmbedder):
-
-    def __init__(self):
-        self.model = ModelRegistry.embedding_model()
+    @property
+    def model(self):
+        return ModelRegistry.embedding_model()
 
     def embed_text(self, text: str) -> list[float]:
         embedding = self.model.encode(text, normalize_embeddings=True)

@@ -16,11 +16,9 @@ from rag_engine.prompts.prompt_builder import PromptBuilder
 
 from rag_engine.llm.llm_itself import LLMItself
 
-from rag_engine.services.indexing_service import IndexingService
+from services.indexing_service import IndexingService
 
-from rag_engine.services.retrieval_service import RetrievalService
-
-from rag_engine.services.rag_service import RAGService
+from services.retrieval_service import RetrievalService
 
 
 loader = DocumentLoader()
@@ -42,22 +40,18 @@ prompt_builder = PromptBuilder()
 llm = LLMItself()
 
 
-retrieval_service = RetrievalService(
-    embedder=embedder,
-    retriever=retriever,
-    reranker=reranker,
-)
+def get_indexing_service():
+    return IndexingService(
+        loader=loader,
+        pipeline=pipeline,
+        chunker=chunker,
+        embedder=BGEEmbedder(),
+        vector_store=ChromaStore(),
+    )
 
-indexing_service = IndexingService(
-    loader=loader,
-    pipeline=pipeline,
-    chunker=chunker,
-    embedder=embedder,
-    vector_store=vector_store,
-)
-
-rag_service = RAGService(
-    retrieval_service=retrieval_service,
-    prompt_builder=prompt_builder,
-    llm=llm,
-)
+def get_retrieval_service():
+    return RetrievalService(
+        embedder=BGEEmbedder(),
+        retriever=Retriever(ChromaStore()),
+        reranker=BGEReranker(),
+    )
