@@ -4,10 +4,8 @@ from rag_engine.vectorstore.chroma_store import ChromaStore
 from rag_engine.embeddings.bge_embedder import BGEEmbedder
 from rag_engine.retriever.filters import SearchFilters
 from core.settings import settings
-from rag_engine.reranking.bge_reranker import BGEReranker
 from core.logger import logger
 from rag_engine.embeddings.jina_embedder import JinaEmbedder
-
 from rag_engine.reranking.jina_reranker import JinaReranker
 
 
@@ -33,16 +31,11 @@ class RetrievalService:
 
     @property
     def reranker(self):
-
         if not settings.ENABLE_RERANKER:
             return None
 
         if not hasattr(self, "_reranker"):
-
-            if settings.RERANKER_PROVIDER == "jina":
-                self._reranker = JinaReranker()
-            else:
-                self._reranker = BGEReranker()
+            self._reranker = JinaReranker()
 
         return self._reranker
 
