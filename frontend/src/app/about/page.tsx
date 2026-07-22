@@ -38,7 +38,6 @@ const futurePlans = [
 export default function AboutPage() {
   const { locale } = useLocale();
 
-  
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
@@ -67,11 +66,11 @@ export default function AboutPage() {
             <p>
               Origami Unfold began as a personal experiment. I wanted to
               understand how AI truly retrieves, understands, and reasons over
-              information - not as a black box, but from its foundations. Building
-              the retrieval pipeline from scratch became my way of learning
-              semantic search, vector embeddings, and Retrieval-Augmented
-              Generation by understanding every layer instead of simply using
-              it.
+              information - not as a black box, but from its foundations.
+              Building the retrieval pipeline from scratch became my way of
+              learning semantic search, vector embeddings, and
+              Retrieval-Augmented Generation by understanding every layer
+              instead of simply using it.
             </p>
             <p className="mt-2">
               Along the journey, I realized the project had become more than a
@@ -155,21 +154,23 @@ export default function AboutPage() {
                   ninjanights
                 </Link>
 
-                <span className="text-neutral-300 dark:text-neutral-700">•</span>
-<Link
+                <span className="text-neutral-300 dark:text-neutral-700">
+                  •
+                </span>
+                <Link
                   href="https://open.spotify.com/user/wxptrsmiblc51satoitf9jc2p?si=6a9b18cf2cdd4fa5"
                   target="_blank"
                   className="inline-flex items-center gap-1.5 text-xs font-medium text-neutral-600 transition hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
                 >
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 24 24"
-                  className="size-3.5 text-neutral-600 dark:text-neutral-400"
-                  fill="currentColor"
-                >
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm4.59 14.41a.62.62 0 0 1-.86.21c-2.36-1.44-5.33-1.77-8.83-.97a.622.622 0 1 1-.28-1.21c3.83-.88 7.12-.5 9.76 1.11.3.18.39.57.21.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.7-1.66-6.82-2.14-10.02-1.17a.78.78 0 1 1-.45-1.49c3.65-1.11 8.19-.57 11.28 1.33.37.23.48.72.26 1.07Zm.11-2.83c-3.24-1.92-8.59-2.1-11.69-1.16a.936.936 0 1 1-.54-1.79c3.56-1.08 9.46-.87 13.19 1.34a.935.935 0 1 1-.96 1.61Z" />
-                </svg>
-                 </Link>
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    className="size-3.5 text-neutral-600 dark:text-neutral-400"
+                    fill="currentColor"
+                  >
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm4.59 14.41a.62.62 0 0 1-.86.21c-2.36-1.44-5.33-1.77-8.83-.97a.622.622 0 1 1-.28-1.21c3.83-.88 7.12-.5 9.76 1.11.3.18.39.57.21.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.7-1.66-6.82-2.14-10.02-1.17a.78.78 0 1 1-.45-1.49c3.65-1.11 8.19-.57 11.28 1.33.37.23.48.72.26 1.07Zm.11-2.83c-3.24-1.92-8.59-2.1-11.69-1.16a.936.936 0 1 1-.54-1.79c3.56-1.08 9.46-.87 13.19 1.34a.935.935 0 1 1-.96 1.61Z" />
+                  </svg>
+                </Link>
               </div>
 
               <p className="mt-2 text-neutral-500 dark:text-neutral-400">

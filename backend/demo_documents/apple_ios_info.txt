@@ -1,0 +1,500 @@
+=================================================================
+APPLE & iOS: THE COMPLETE FACT FILE
+A Deep Dive Into the History, Products, and Culture of Apple Inc.
+=================================================================
+
+
+INTRODUCTION
+-----------------------------------------------------------------
+Apple Inc. is one of the most influential companies in the history
+of technology, a business that has repeatedly reshaped how people
+listen to music, make phone calls, work, communicate, and think
+about design itself. Founded in a garage in Los Altos, California,
+in 1976, Apple grew from a small hobbyist computer company into a
+global technology giant valued at close to five trillion dollars
+as of mid-2026, trading places with Nvidia and a handful of other
+tech titans for the title of the world's most valuable public
+company. Apple's story is inseparable from the story of its
+co-founder Steve Jobs, whose obsession with simplicity, industrial
+design, and "insanely great" products became the company's guiding
+philosophy long after his death in 2011. Under current CEO Tim
+Cook, who took over from Jobs, Apple has expanded far beyond
+computers and phones into services, wearables, and a tightly
+integrated ecosystem that keeps hundreds of millions of users
+inside its walled garden. Below is a wide-ranging essay-style
+breakdown of Apple's history, followed by ninety standalone facts
+covering everything from the founding of the company to the inner
+workings of iOS, that can be used as trivia, conversation starters,
+or general reference material.
+
+
+PART ONE: THE ESSAY — HOW APPLE BECAME APPLE
+-----------------------------------------------------------------
+
+Apple's origin story is legendary in Silicon Valley folklore.
+Steve Jobs, Steve Wozniak, and Ronald Wayne founded Apple Computer
+Company on April 1, 1976. Wozniak was the engineering genius who
+built the Apple I by hand, while Jobs was the visionary who saw
+the potential to sell fully assembled computers to a market that,
+at the time, was dominated by hobbyist kits. Ronald Wayne, the
+lesser-known third co-founder, sold his 10 percent stake back to
+Jobs and Wozniak for just 800 dollars less than two weeks after
+the company was formed, a decision that would have made him a
+multi-billionaire had he held on. The Apple II, released in 1977,
+became one of the first mass-produced personal computers and
+helped kickstart the home computer revolution, giving Apple the
+capital and credibility to go public in 1980 in what was, at the
+time, the biggest IPO since Ford Motor Company in 1956.
+
+The 1980s brought both triumph and turmoil. The Macintosh,
+launched in 1984 with a now-iconic Ridley Scott-directed Super
+Bowl commercial referencing George Orwell's "1984," introduced the
+graphical user interface and mouse to the mainstream, borrowing
+heavily from technology first demonstrated at Xerox PARC. Despite
+the cultural splash, internal power struggles between Jobs and
+CEO John Sculley led to Jobs being pushed out of his own company
+in 1985. Jobs went on to found NeXT, a computer company aimed at
+higher education and business, and separately purchased a small
+computer graphics division from Lucasfilm that he renamed Pixar,
+which would go on to revolutionize animated filmmaking. Meanwhile,
+Apple without Jobs drifted through the late 1980s and 1990s,
+releasing a scattered lineup of products, including the Newton
+MessagePad, an early and commercially unsuccessful personal
+digital assistant.
+
+Apple's fortunes changed dramatically in 1996-1997. Struggling
+financially and lacking a modern operating system, Apple acquired
+NeXT for approximately 400 million dollars, a deal that brought
+Jobs back into the fold as an advisor and, soon after, as interim
+CEO. NeXT's operating system, NeXTSTEP, became the technical
+foundation for what would eventually become Mac OS X (and later,
+macOS), as well as the underlying architecture for iOS. Jobs
+famously secured a 150 million dollar investment from rival
+Microsoft in 1997 to keep Apple solvent, a deal that also ensured
+Microsoft Office would continue to be developed for the Mac. From
+this position of near-collapse, Apple began one of the most
+remarkable corporate turnarounds in business history.
+
+The late 1990s and 2000s saw a string of category-defining
+products. The colorful iMac G3, released in 1998, ditched floppy
+disks and legacy ports in favor of USB, and its translucent
+"Bondi Blue" design signaled Apple's return to bold, human-
+centered design. The iPod, launched in 2001, transformed the
+consumics of the music industry alongside the iTunes Store,
+which launched in 2003 and legitimized paid digital music
+downloads at a time when piracy was rampant. Apple's marketing
+slogan "1,000 songs in your pocket" captured the cultural moment
+perfectly. But it was the iPhone, unveiled by Jobs on January 9,
+2007, and released on June 29, 2007, that truly redefined the
+company and the entire consumer electronics industry. Jobs
+described it as three devices in one: a widescreen iPod with
+touch controls, a revolutionary mobile phone, and a breakthrough
+internet communications device. The App Store followed in July
+2008, creating an entirely new economy of third-party software
+developers and cementing the iPhone's dominance.
+
+The iPad arrived in 2010, carving out the modern tablet market
+almost single-handedly, though critics at the time dismissed it
+as "just a big iPod touch." Steve Jobs passed away on October 5,
+2011, from complications related to pancreatic cancer, just one
+day after Apple unveiled the iPhone 4s. Tim Cook, who had served
+as Apple's Chief Operating Officer and had already been filling
+in for Jobs during his medical leaves, took over as CEO. Under
+Cook's leadership, Apple has emphasized operational excellence,
+supply chain mastery, privacy as a marketing pillar, and a
+dramatic pivot toward high-margin services such as Apple Music,
+iCloud, Apple TV+, Apple Arcade, and Apple Pay. Cook has also
+overseen the introduction of the Apple Watch in 2015, AirPods in
+2016, and the company's own silicon transition, moving Macs from
+Intel processors to Apple-designed ARM-based M-series chips
+starting in 2020 with the M1.
+
+iOS itself has evolved enormously since its 2007 debut, when it
+didn't even have an official name; it was originally called
+"iPhone OS." The software introduced the App Store in 2008 (iOS
+2), multitasking and folders in iOS 4, Siri in iOS 5, Apple Maps
+(replacing Google Maps as default) in iOS 6, a complete visual
+overhaul under design chief Jony Ive in iOS 7, widgets and a
+redesigned home screen in later versions, Dark Mode in iOS 13,
+App Tracking Transparency privacy controls in iOS 14.5, and
+customizable lock screens in iOS 16. Each release reflects
+Apple's broader strategic priorities, whether that's opening up
+to developers, tightening privacy, or deepening integration
+across the Apple ecosystem of iPhone, iPad, Mac, Watch, and
+Apple TV.
+
+Today, Apple is as much a services and ecosystem company as it
+is a hardware company. Billions of active devices are in use
+worldwide, tied together by iCloud syncing, Handoff, Continuity,
+and Apple's tightly controlled hardware-software integration.
+Apple's massive cash reserves, aggressive stock buyback programs,
+and enormous profit margins make it a perennial fixture at or
+near the top of global market capitalization rankings. It remains
+headquartered at Apple Park, the ring-shaped campus in Cupertino,
+California, designed with input from Jobs himself before his
+death and completed in 2017. Whether admired for its design
+philosophy or criticized for its walled-garden approach, high
+prices, and right-to-repair battles, Apple's influence on modern
+computing, communication, and consumer culture is undeniable.
+
+
+PART TWO: 90 APPLE & iOS FACTS
+-----------------------------------------------------------------
+
+COMPANY HISTORY & FOUNDING
+
+1. Apple was founded on April 1, 1976, by Steve Jobs, Steve
+   Wozniak, and Ronald Wayne.
+
+2. Ronald Wayne sold his 10 percent stake in Apple for 800
+   dollars just twelve days after the company was founded.
+
+3. The Apple I was hand-built by Steve Wozniak and sold as a
+   circuit board without a case, keyboard, or monitor.
+
+4. Apple was originally headquartered in Steve Jobs's parents'
+   garage in Los Altos, California.
+
+5. The company's name reportedly came from Jobs's time working
+   at an apple orchard, and possibly his fondness for the fruit,
+   though the exact origin has been debated over the years.
+
+6. Apple's first logo, designed in 1976, featured Isaac Newton
+   sitting under an apple tree, and was quickly replaced by the
+   simpler rainbow-striped apple logo in 1977.
+
+7. Apple went public on December 12, 1980, creating more
+   instant millionaires (over 300) than any company in history
+   up to that point.
+
+8. The Macintosh, launched in 1984, was introduced with a
+   famous Super Bowl commercial directed by Ridley Scott.
+
+9. Steve Jobs was forced out of Apple in 1985 following internal
+   conflicts with CEO John Sculley.
+
+10. After leaving Apple, Jobs founded NeXT and also purchased
+    the computer graphics division of Lucasfilm, renaming it
+    Pixar Animation Studios.
+
+11. Apple acquired NeXT in 1996 for roughly 400 million dollars,
+    bringing Steve Jobs back to the company.
+
+12. Jobs became Apple's interim CEO in 1997 and dropped the
+    "interim" from his title in 2000.
+
+13. In 1997, rival Microsoft invested 150 million dollars in
+    Apple to help keep the struggling company afloat.
+
+14. Apple's official corporate name was "Apple Computer, Inc."
+    until 2007, when it was shortened to "Apple Inc." to reflect
+    its expansion beyond computers.
+
+15. Steve Jobs died on October 5, 2011, one day after Apple
+    announced the iPhone 4s.
+
+16. Tim Cook became Apple's CEO in August 2011 and previously
+    served as the company's Chief Operating Officer.
+
+17. Apple Park, the company's ring-shaped headquarters in
+    Cupertino, opened in 2017 and was one of the last projects
+    Steve Jobs personally helped design.
+
+18. Apple became the first publicly traded U.S. company to
+    reach a 1 trillion dollar market valuation in August 2018.
+
+19. Apple later became the first U.S. company to reach a 2
+    trillion dollar valuation in August 2020.
+
+20. As of mid-2026, Apple's market capitalization has fluctuated
+    in the range of roughly 3.7 to nearly 5 trillion dollars,
+    keeping it among the one or two most valuable companies in
+    the world alongside Nvidia.
+
+
+HARDWARE MILESTONES
+
+21. The Apple II, released in 1977, was one of the first
+    successful mass-produced personal computers.
+
+22. The original Macintosh, released in 1984, was the first
+    mass-market computer to popularize the graphical user
+    interface and mouse for everyday consumers.
+
+23. The iMac G3, launched in 1998, came in translucent colors
+    and helped revive Apple's fortunes with its bold design.
+
+24. The iMac G3 dropped the floppy disk drive entirely in favor
+    of USB ports, a controversial move at the time.
+
+25. The iPod was released on October 23, 2001, and was marketed
+    with the slogan "1,000 songs in your pocket."
+
+26. The first iPods used a FireWire connection and a mechanical
+    scroll wheel before later models introduced the touch-
+    sensitive click wheel.
+
+27. The iPhone was unveiled by Steve Jobs on January 9, 2007,
+    and went on sale June 29, 2007.
+
+28. Jobs introduced the original iPhone as three devices in one:
+    an iPod, a phone, and an internet communicator.
+
+29. The first iPhone did not support third-party apps or copy
+    and paste; both features came in later software updates.
+
+30. The iPad was introduced in January 2010 and helped define
+    the modern consumer tablet category.
+
+31. The Apple Watch was announced in September 2014 and released
+    in April 2015, marking Apple's entry into wearables.
+
+32. AirPods were introduced in 2016 as a wireless replacement for
+    Apple's iconic wired earbuds, launching alongside the removal
+    of the headphone jack from the iPhone 7.
+
+33. Apple began transitioning Mac computers from Intel processors
+    to its own custom-designed ARM-based Apple Silicon chips in
+    2020, starting with the M1 chip.
+
+34. The Apple Silicon transition allowed iPhone and iPad apps to
+    run natively on Mac computers for the first time.
+
+35. Apple has used several different processor architectures over
+    its history, moving from the Motorola 68000 series to
+    PowerPC, then to Intel x86, and finally to its own ARM-based
+    Apple Silicon.
+
+36. The Touch Bar, a thin OLED strip replacing the function key
+    row, debuted on the MacBook Pro in 2016 and was eventually
+    phased out on later redesigns.
+
+37. Apple's Lightning connector, introduced in 2012, was
+    eventually phased out in favor of USB-C starting with the
+    iPhone 15 in 2023, driven partly by European Union
+    regulations.
+
+38. Face ID, introduced with the iPhone X in 2017, replaced Touch
+    ID's fingerprint sensor with facial recognition using an
+    infrared depth-sensing camera system.
+
+39. Touch ID, Apple's fingerprint recognition system, first
+    appeared on the iPhone 5s in 2013.
+
+40. The iPhone X, released in 2017, was the first iPhone to
+    remove the physical home button in favor of full-screen
+    gesture navigation.
+
+
+iOS & SOFTWARE
+
+41. iOS was originally called "iPhone OS" and did not receive
+    its current name until iOS 4 in 2010.
+
+42. The App Store officially launched on July 10, 2008, with iOS
+    2.0 and around 500 apps available at launch.
+
+43. Multitasking for third-party apps was not introduced until
+    iOS 4 in 2010; earlier versions could only run one app at a
+    time.
+
+44. Siri, Apple's voice assistant, was introduced with the iPhone
+    4s in 2011 and was based on technology Apple acquired from a
+    startup of the same name.
+
+45. Apple Maps replaced Google Maps as the default mapping app in
+    iOS 6 in 2012, a launch widely criticized for inaccurate data
+    at the time.
+
+46. iOS 7, released in 2013 under design chief Jony Ive, brought
+    a dramatic visual overhaul, moving away from skeuomorphic
+    design toward a flatter, more minimalist interface.
+
+47. Apple Pay launched in 2014, allowing contactless payments
+    using near-field communication (NFC) technology built into
+    iPhones.
+
+48. Dark Mode was introduced system-wide in iOS 13, released in
+    2019.
+
+49. App Tracking Transparency, introduced in iOS 14.5 in 2021,
+    requires apps to ask users for permission before tracking
+    their activity across other apps and websites.
+
+50. iOS 16, released in 2022, introduced a highly customizable
+    lock screen with widgets and multiple photo styles.
+
+51. iOS is built on a Unix-based foundation called Darwin, which
+    is also the open-source core underlying macOS.
+
+52. iOS and macOS share a common technical lineage that traces
+    back to NeXTSTEP, the operating system Apple acquired along
+    with NeXT in 1996.
+
+53. Swift, Apple's modern programming language for iOS and macOS
+    app development, was introduced in 2014 as a faster, safer
+    alternative to Objective-C.
+
+54. Objective-C was the primary programming language for Apple
+    software development for decades before Swift's introduction.
+
+55. iCloud, Apple's cloud storage and sync service, launched in
+    2011, replacing the earlier MobileMe service.
+
+56. Handoff and Continuity features, introduced in 2014, allow
+    users to start a task on one Apple device and seamlessly
+    continue it on another.
+
+57. AirDrop, introduced in 2011, allows quick file sharing
+    between nearby Apple devices using a combination of Bluetooth
+    and Wi-Fi.
+
+58. Apple's Find My network uses a crowdsourced mesh of hundreds
+    of millions of Apple devices to help locate lost devices and
+    AirTags, even when they're offline.
+
+59. FaceTime, Apple's video calling app, launched in 2010
+    alongside the iPhone 4, which was the first iPhone with a
+    front-facing camera.
+
+60. Emoji were first included on iPhones starting with iOS 2.2 in
+    2008, though initially the keyboard was hidden and required
+    third-party apps to unlock in some regions.
+
+
+CULTURE, BUSINESS & MISCELLANEOUS
+
+61. Apple's fiscal year ends in late September, so its quarterly
+    earnings calendar does not match the standard calendar year.
+
+62. Apple typically unveils new iPhones each September, a
+    tradition dating back to the iPhone 5 in 2012 (earlier
+    iPhones launched in the summer).
+
+63. The "i" prefix in iMac, iPod, iPhone, and iPad was popularized
+    by Steve Jobs, though Apple has never officially confirmed a
+    single definitive meaning, with "internet" being the most
+    commonly cited inspiration.
+
+64. Apple's advertising slogan "Think Different," launched in
+    1997, was created by ad agency TBWA\Chiat\Day and featured
+    historical figures rather than Apple products.
+
+65. Jony Ive served as Apple's Chief Design Officer for over two
+    decades before departing the company in 2019 to start his own
+    independent design firm, LoveFrom.
+
+66. Apple has consistently ranked among the world's most valuable
+    brands in rankings by firms such as Interbrand.
+
+67. Apple Park's main building is a circular structure often
+    nicknamed "the spaceship" and is covered in curved glass
+    panels.
+
+68. Apple manufactures the vast majority of its hardware through
+    contract manufacturers, most notably Foxconn (Hon Hai
+    Precision Industry), primarily in China, though Apple has
+    increasingly diversified assembly to countries like India and
+    Vietnam.
+
+69. Apple's Ireland-based subsidiary structure became the subject
+    of a major European Commission tax ruling, which found in
+    2016 that Apple owed Ireland billions in unpaid taxes; the
+    case went through years of appeals in European courts.
+
+70. Apple has faced ongoing antitrust scrutiny worldwide over App
+    Store policies, including a high-profile legal battle with
+    Epic Games over in-app payment rules that began in 2020.
+
+71. The European Union's Digital Markets Act has forced Apple to
+    make significant changes in the EU, including allowing
+    alternative app marketplaces and switching to USB-C charging.
+
+72. Apple's "walled garden" approach, which limits apps to
+    Apple-approved distribution channels on iOS, is often cited
+    as both a security strength and a competitive point of
+    criticism.
+
+73. Apple has topped Fortune's list of most admired companies
+    multiple times over the past two decades.
+
+74. The Apple logo has never included the company's name since
+    1998, relying entirely on the bitten apple silhouette for
+    brand recognition.
+
+75. The "bite" in the Apple logo is often said to help
+    distinguish the silhouette from a cherry or tomato at small
+    sizes, though Apple has never given one single official
+    explanation.
+
+76. Apple's original mouse for the Macintosh in 1984 had only one
+    button, a design philosophy Steve Jobs favored for
+    simplicity, unlike the multi-button mice common on PCs.
+
+77. Apple has one of the largest cash reserves of any public
+    company in the world, historically holding well over 100
+    billion dollars in cash and marketable securities.
+
+78. Apple Card, a credit card launched in partnership with
+    Goldman Sachs in 2019, was one of Apple's first major moves
+    into consumer financial services.
+
+79. Apple TV+ launched in November 2019 and has since won
+    multiple major awards, including Best Picture at the Oscars
+    for "CODA" in 2022, the first streaming service to do so for
+    Apple.
+
+80. Apple Arcade, a subscription gaming service offering ad-free
+    and download-free access to a curated library of games,
+    launched in 2019.
+
+81. Apple's various subscription offerings, including Apple
+    Music, iCloud+, Apple TV+, and Apple Arcade, can be bundled
+    together through a subscription plan called Apple One.
+
+82. The Newton MessagePad, released in 1993, was one of Apple's
+    earliest attempts at a handheld personal digital assistant
+    and was ultimately discontinued in 1998.
+
+83. Apple briefly experimented with licensing its Mac operating
+    system to third-party manufacturers to build "Mac clones" in
+    the mid-1990s, a program Steve Jobs ended shortly after his
+    return.
+
+84. The Apple Newton's handwriting recognition software became a
+    popular target for jokes and satire, most famously in the
+    comic strip Doonesbury.
+
+85. Apple's retail stores, which began opening in 2001, are known
+    for their minimalist glass-and-steel designs and helped
+    redefine consumer electronics retail.
+
+86. The Apple Store on Fifth Avenue in New York City is famous
+    for its all-glass cube entrance above an underground store.
+
+87. Apple's environmental initiatives include a stated goal of
+    achieving carbon neutrality across its entire supply chain
+    and product life cycle by 2030.
+
+88. Apple has released a "Self Service Repair" program, allowing
+    customers to purchase official parts and tools to repair
+    certain devices themselves, partly in response to
+    right-to-repair pressure.
+
+89. Vision Pro, Apple's mixed-reality headset, was unveiled in
+    2023 and released in early 2024, marking the company's first
+    entirely new product category since the Apple Watch.
+
+90. Apple's product naming and release conventions, its annual
+    Worldwide Developers Conference (WWDC) each June, and its
+    September hardware events have become fixtures of the tech
+    calendar that are closely watched by media, investors, and
+    consumers around the world every year.
+
+
+-----------------------------------------------------------------
+END OF DOCUMENT
+Compiled as a general knowledge and conversation-starter reference
+on Apple Inc. and iOS. Facts reflect publicly known information
+as of 2026 and are intended for informational and trivia purposes.
+-----------------------------------------------------------------

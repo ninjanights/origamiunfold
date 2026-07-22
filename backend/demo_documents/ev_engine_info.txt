@@ -1,0 +1,537 @@
+ENGINES & ELECTRIC VEHICLES: THE COMPLETE FACT FILE
+A Deep Dive Into How Cars Move, Who Invented Them, and Where the
+Industry Is Headed
+
+
+
+INTRODUCTION
+
+The story of how humans get from one place to another under their
+own mechanical power is really two intertwined stories: the rise,
+dominance, and slow decline of the internal combustion engine
+(ICE), and the surprisingly old, then abandoned, then triumphantly
+revived story of the electric vehicle (EV). Most people assume
+electric cars are a 21st-century invention and gasoline cars came
+first, but the truth is almost the opposite. Electric vehicles
+were actually among the very first automobiles on the road in the
+1800s, only to be pushed aside by gasoline power for most of the
+20th century, before roaring back in the 21st century as battery
+technology, environmental pressure, and companies like Tesla
+changed the economics of driving. Today, in 2026, electric cars
+account for roughly a quarter of all new car sales worldwide,
+led overwhelmingly by China, with Europe close behind and the
+United States lagging due to shifting federal incentives. Below
+is a full essay covering the history and mechanics of both engine
+types, followed by ninety standalone facts covering everything
+from Karl Benz's patent to modern battery chemistry.
+
+
+PART ONE: THE ESSAY — FROM STEAM TO SILICON
+
+
+Long before gasoline engines existed, inventors were already
+experimenting with electric propulsion. As early as the 1830s
+and 1840s, tinkerers in Scotland, the Netherlands, and Hungary
+built small electric carriages powered by non-rechargeable
+batteries, decades before Karl Benz patented his gasoline-powered
+Benz Patent-Motorwagen in 1886, generally considered the first
+true automobile. By the late 1800s and into the early 1900s,
+electric vehicles were genuinely competitive with, and in some
+ways superior to, early gasoline cars. They were quiet, didn't
+require hand-cranking to start, produced no exhaust fumes, and
+were especially popular with urban drivers and women, since they
+didn't require the physical strength needed to crank-start a
+combustion engine. In fact, in the year 1900, roughly a third of
+all cars on American roads were electric, competing directly
+against steam-powered and gasoline-powered vehicles for market
+share.
+
+The combustion engine's triumph over electric power came down to
+a combination of factors. Henry Ford's introduction of the moving
+assembly line for the Model T in 1913 slashed the cost of
+gasoline cars dramatically, making them far more affordable than
+electric competitors, whose heavy lead-acid batteries remained
+expensive and limited in range. The discovery of cheap Texas
+crude oil lowered gasoline prices, and the invention of the
+electric starter motor by Charles Kettering in 1912 eliminated
+the dangerous hand-crank, removing one of the gasoline engine's
+biggest disadvantages. By the 1920s, electric vehicles had all
+but disappeared from the market, and the internal combustion
+engine entered a dominance that would last for most of the
+century. Meanwhile, the technology underlying the combustion
+engine kept evolving, from Nikolaus Otto's four-stroke cycle in
+1876, to Rudolf Diesel's compression-ignition engine patented in
+1893, to the increasingly refined V8s, turbochargers, and fuel
+injection systems that defined 20th-century automotive
+engineering.
+
+Electric vehicles resurfaced periodically throughout the
+20th century, usually in response to oil shocks or environmental
+concern, but never gained lasting traction. The 1973 oil crisis
+spurred renewed interest, and General Motors' EV1, launched in
+1996 and famously withdrawn and mostly destroyed by 2003, became
+a cult symbol of a road not taken, later chronicled in the
+documentary "Who Killed the Electric Car?" The real turning point
+came with advances in lithium-ion battery technology, originally
+developed for laptops and consumer electronics in the 1990s, and
+with the founding of Tesla Motors in 2003 by Martin Eberhard and
+Marc Tarpenning, with Elon Musk joining shortly after as an early
+investor and eventually taking over as CEO. Tesla's Roadster,
+launched in 2008, proved that an electric car could be genuinely
+fast and desirable rather than a compromise, and the Model S,
+launched in 2012, proved EVs could be practical luxury sedans
+with real range. Legacy automakers, initially skeptical, followed
+with their own electric offerings throughout the 2010s and 2020s,
+while Chinese manufacturers, backed by aggressive government
+industrial policy and companies like BYD, CATL, and NIO, turned
+China into the largest EV market and battery-manufacturing hub on
+Earth.
+
+Mechanically, the internal combustion engine and the electric
+motor work in fundamentally different ways. A gasoline or diesel
+engine is fundamentally a controlled series of small explosions.
+Air and fuel are mixed and compressed inside a cylinder, then
+ignited, either by a spark plug in a gasoline engine or by the
+heat of compression alone in a diesel engine. This explosion
+pushes a piston downward, and that linear motion is converted
+into rotational motion by a crankshaft. Most modern engines
+repeat this across four strokes per cylinder: intake, compression,
+combustion (power), and exhaust, a cycle formalized by Nikolaus
+Otto in the 1860s and 1870s. The crankshaft's rotation eventually
+turns the wheels through a transmission, which uses different
+gear ratios to manage the tradeoff between torque and speed, since
+combustion engines only produce useful power within a specific
+range of engine speeds (measured in RPM). This is why gasoline
+cars need multi-speed transmissions, clutches, and idling systems
+in the first place; without gearing, the engine would either
+stall at low speeds or scream uselessly at high ones.
+
+Electric vehicles avoid nearly all of this mechanical complexity.
+An electric motor works on electromagnetic principles discovered
+by scientists like Michael Faraday in the 1830s: electric current
+flowing through coils of wire creates a magnetic field, and that
+field is arranged to interact with magnets (or induced currents)
+on a rotating shaft, causing it to spin. Electric motors can
+produce maximum torque instantly, from a full stop, which is why
+EVs feel so immediately quick off the line compared to gasoline
+cars, which need to build up RPM before delivering peak torque.
+Because electric motors can operate efficiently across a much
+wider range of speeds than combustion engines, most EVs get away
+with a single-speed gear reduction instead of a traditional
+multi-speed transmission. Power comes from a large battery pack,
+typically composed of hundreds or thousands of individual lithium-
+ion cells wired together, managed by a battery management system
+that monitors temperature, charge balance, and safety. When you
+brake in an EV, the motor can often run in reverse as a generator,
+a process called regenerative braking, which slows the car while
+recapturing kinetic energy and feeding it back into the battery,
+something a conventional combustion car's brakes simply cannot do
+since they only dissipate energy as heat through friction.
+
+The two technologies also differ enormously in efficiency. A
+typical gasoline engine converts only about 20 to 35 percent of
+the energy stored in fuel into actual motion, with the rest lost
+as heat and friction, which is why engines need radiators and
+cooling systems in the first place. Electric motors, by contrast,
+routinely convert 85 to 95 percent of stored electrical energy
+into motion, making them dramatically more efficient machines,
+even after accounting for losses in charging and battery
+chemistry. This efficiency gap, combined with falling battery
+prices, driven largely by manufacturing scale in China and
+improvements in chemistries like lithium iron phosphate (LFP), is
+the central reason EVs have become cost-competitive with gasoline
+cars in a growing number of markets by the mid-2020s. As of 2026,
+electric cars represent roughly a quarter of new car sales
+worldwide, with China alone accounting for more than half of all
+EVs sold globally, Europe growing steadily under tightening
+emissions regulations, and the United States lagging behind after
+federal EV tax credits were scaled back. Whether this trajectory
+continues toward the IEA's projection of roughly half of global
+car sales being electric by 2035 will depend on battery costs,
+charging infrastructure, government policy, and how quickly
+automakers can make EVs affordable for average buyers rather than
+early adopters.
+
+
+PART TWO: 90 ENGINE & EV FACTS
+
+FOUNDING & EARLY HISTORY
+
+1. Small-scale electric vehicles were built by inventors in
+   Scotland, the Netherlands, and Hungary as early as the 1830s
+   and 1840s, before gasoline cars existed.
+
+2. Karl Benz patented the Benz Patent-Motorwagen in 1886,
+   widely regarded as the first true gasoline-powered automobile.
+
+3. Nikolaus Otto developed and patented the four-stroke internal
+   combustion cycle in the 1860s and 1870s, forming the basis for
+   most modern gasoline engines.
+
+4. Rudolf Diesel patented his compression-ignition engine design
+   in 1893, which does not require spark plugs and instead
+   ignites fuel using the heat generated by compression alone.
+
+5. By 1900, roughly one-third of cars on American roads were
+   electric, competing directly against steam and gasoline
+   vehicles.
+
+6. Early electric cars were especially popular with women and
+   urban drivers because they did not require dangerous hand-
+   cranking to start, unlike gasoline vehicles of the era.
+
+7. Henry Ford's moving assembly line, introduced for the Model T
+   in 1913, dramatically lowered the cost of gasoline vehicles
+   and helped push electric cars out of the mainstream market.
+
+8. Charles Kettering invented the electric starter motor in
+   1912, eliminating the need for hand-cranking gasoline engines
+   and removing one of the EV's key advantages.
+
+9. By the 1920s, electric vehicles had all but vanished from the
+   consumer market, giving way almost entirely to gasoline power.
+
+10. The 1973 oil crisis briefly revived interest in electric and
+    alternative-fuel vehicles among researchers and automakers.
+
+11. General Motors launched the EV1 in 1996, an early modern
+    mass-produced electric car that was later withdrawn from the
+    market and largely destroyed by 2003.
+
+12. The EV1's discontinuation became the subject of the 2006
+    documentary "Who Killed the Electric Car?"
+
+13. Tesla Motors was founded in 2003 by engineers Martin Eberhard
+    and Marc Tarpenning.
+
+14. Elon Musk joined Tesla as an early investor and chairman in
+    2004, later becoming CEO in 2008.
+
+15. Tesla's first production car, the Roadster, launched in 2008
+    and was based on a modified Lotus Elise chassis.
+
+16. Tesla's Model S, launched in 2012, was the company's first
+    car built entirely on its own platform and proved EVs could
+    be practical, long-range vehicles.
+
+17. Nissan's LEAF, launched in 2010, was one of the first mass-
+    market, affordable electric cars from a major legacy
+    automaker.
+
+18. Chinese EV maker BYD originally began as a battery
+    manufacturer in 1995 before expanding into vehicle
+    production.
+
+19. China's aggressive industrial policy and subsidies through
+    the 2010s helped it become the world's largest EV
+    manufacturing and battery-production hub.
+
+20. By 2025, BYD had surpassed Tesla in total annual global EV
+    deliveries, according to industry sales data.
+
+
+HOW COMBUSTION ENGINES WORK
+
+21. A gasoline engine works through a sequence of controlled
+    small explosions inside enclosed cylinders.
+
+22. Most gasoline and diesel engines use a four-stroke cycle:
+    intake, compression, combustion (power), and exhaust.
+
+23. In a gasoline engine, a spark plug ignites a compressed
+    mixture of air and fuel to create the combustion stroke.
+
+24. In a diesel engine, fuel is ignited purely by the heat
+    generated from high compression, with no spark plug required.
+
+25. The explosive force of combustion pushes a piston downward
+    inside the cylinder.
+
+26. A crankshaft converts the linear up-and-down motion of the
+    pistons into rotational motion that eventually turns the
+    wheels.
+
+27. A camshaft, driven by the crankshaft via a timing belt or
+    chain, controls the precise opening and closing of intake and
+    exhaust valves.
+
+28. Because combustion engines only produce useful power within a
+    limited RPM range, cars need multi-speed transmissions to
+    manage the tradeoff between torque and speed.
+
+29. A clutch (in manual transmissions) or torque converter (in
+    automatics) allows the engine to disengage from the wheels so
+    the car can idle without stalling.
+
+30. Turbochargers use exhaust gases to spin a turbine that forces
+    additional compressed air into the engine, increasing power
+    without significantly increasing engine size.
+
+31. Superchargers achieve a similar power boost to turbochargers,
+    but are mechanically driven directly by the engine's
+    crankshaft rather than by exhaust gases.
+
+32. Fuel injection systems, which precisely spray fuel into the
+    engine, largely replaced older carburetor systems by the
+    1990s for better efficiency and emissions control.
+
+33. Catalytic converters use precious metals like platinum,
+    palladium, and rhodium to chemically convert harmful exhaust
+    gases into less harmful compounds before they exit the
+    tailpipe.
+
+34. A typical gasoline engine converts only about 20 to 35
+    percent of the chemical energy in fuel into usable motion,
+    with most of the rest lost as heat.
+
+35. Engine cooling systems, including radiators and water pumps,
+    exist specifically to manage the enormous heat generated by
+    repeated combustion.
+
+36. Engine oil is essential to reduce friction between the many
+    moving metal parts inside a combustion engine, and it also
+    helps carry heat away from critical components.
+
+37. A V engine arranges its cylinders in two angled banks (like
+    a V shape) sharing a single crankshaft, while an inline engine
+    arranges all cylinders in a single row.
+
+38. A W engine, used in some high-performance vehicles, combines
+    multiple cylinder banks into a compact configuration resembling
+    the letter W.
+
+39. Diesel engines generally achieve better fuel efficiency than
+    gasoline engines due to higher compression ratios and the
+    energy density of diesel fuel.
+
+40. Hybrid vehicles combine a traditional combustion engine with
+    an electric motor and battery, using the electric system to
+    improve efficiency and reduce fuel consumption, most famously
+    popularized by the Toyota Prius, launched in Japan in 1997.
+
+
+HOW ELECTRIC MOTORS & EVs WORK
+
+41. Electric motors operate on electromagnetic principles first
+    demonstrated by scientists like Michael Faraday in the 1830s.
+
+42. In an electric motor, current flowing through coiled wires
+    creates a magnetic field that interacts with magnets on a
+    rotating shaft, causing it to spin.
+
+43. Electric motors can deliver maximum torque instantly from a
+    complete stop, which is why EVs typically feel quicker off
+    the line than comparable gasoline cars.
+
+44. Most EVs use a single-speed gear reduction instead of a
+    traditional multi-speed transmission, since electric motors
+    operate efficiently across a much wider range of speeds.
+
+45. An EV's battery pack is typically made up of hundreds or
+    thousands of individual lithium-ion cells wired together in
+    modules.
+
+46. A battery management system continuously monitors
+    temperature, voltage, and charge balance across an EV's
+    battery cells to keep them operating safely.
+
+47. Regenerative braking allows an EV's electric motor to run in
+    reverse as a generator during braking, recapturing kinetic
+    energy and feeding it back into the battery.
+
+48. Regenerative braking allows some EVs to be driven using
+    "one-pedal driving," where lifting off the accelerator alone
+    provides significant braking force.
+
+49. Electric motors typically convert roughly 85 to 95 percent of
+    electrical energy into motion, making them far more efficient
+    than combustion engines.
+
+50. Two of the most common electric motor designs used in EVs are
+    permanent magnet synchronous motors and AC induction motors,
+    the latter popularized in early Tesla models.
+
+51. Lithium-ion batteries, the dominant EV battery type, were
+    originally developed for consumer electronics like laptops
+    and camcorders in the 1990s before being adapted for
+    automotive use.
+
+52. Lithium iron phosphate (LFP) batteries have become
+    increasingly popular in EVs because they are cheaper and more
+    durable, though they generally offer somewhat lower energy
+    density than nickel-based lithium-ion chemistries.
+
+53. DC fast charging can recharge many modern EV batteries to
+    around 80 percent capacity in roughly 20 to 40 minutes,
+    depending on the vehicle and charger.
+
+54. Most EV owners primarily charge overnight at home using
+    slower Level 1 or Level 2 AC chargers rather than relying on
+    public DC fast chargers.
+
+55. EV batteries typically use liquid cooling systems to manage
+    heat during both driving and fast charging.
+
+56. Because EVs have no traditional exhaust system, transmission,
+    or engine block, they generally have far fewer moving parts
+    than gasoline cars, which can reduce long-term maintenance
+    needs.
+
+57. Many EVs feature a "frunk," or front trunk, a storage space
+    made possible by the absence of a large combustion engine at
+    the front of the car.
+
+58. EV battery packs are typically mounted low in the vehicle's
+    floor, which lowers the car's center of gravity and can
+    improve handling and rollover resistance.
+
+59. Cold weather can significantly reduce an EV's driving range,
+    since heating the cabin and battery consumes energy that
+    would otherwise go toward propulsion.
+
+60. Public charging networks, including fast-charging corridors
+    along highways, have expanded rapidly worldwide, with China
+    alone adding over a million new public chargers in 2025.
+
+
+MODERN MARKET, POLICY & MISCELLANEOUS
+
+61. Global electric car sales surpassed 20 million units in 2025,
+    accounting for roughly a quarter of all new car sales
+    worldwide.
+
+62. China accounts for more than half of all new EV sales
+    globally, making it by far the largest electric vehicle
+    market on Earth.
+
+63. Norway has one of the highest EV adoption rates in the world,
+    with electric vehicles representing the vast majority of new
+    car sales in the country.
+
+64. The United States' EV sales share has lagged behind China and
+    Europe, and sales slowed further after changes to federal tax
+    credits reduced financial incentives for buyers.
+
+65. China produces the large majority of the world's EV battery
+    cells, with companies like CATL and BYD dominating global
+    battery manufacturing.
+
+66. CATL, founded in 2011, has grown into the world's largest EV
+    battery manufacturer by installed capacity.
+
+67. Battery pack costs have fallen dramatically over the past
+    decade due to manufacturing scale and improved chemistries,
+    narrowing the price gap between EVs and gasoline cars.
+
+68. Plug-in hybrid electric vehicles (PHEVs) combine a battery
+    and electric motor with a traditional combustion engine,
+    allowing limited all-electric range alongside gasoline
+    backup.
+
+69. Fuel cell electric vehicles (FCEVs) generate electricity
+    onboard through a chemical reaction between hydrogen and
+    oxygen, emitting only water vapor, though they remain a much
+    smaller segment of the market than battery electric vehicles.
+
+70. The Toyota Mirai and Hyundai Nexo are among the most notable
+    hydrogen fuel cell vehicles sold to consumers.
+
+71. The European Union's tightening CO2 emissions standards have
+    been a significant driver of EV adoption growth across
+    European car markets.
+
+72. Many governments around the world have announced future
+    bans or phase-outs of new gasoline and diesel car sales,
+    with target dates ranging from the 2030s to 2040s in various
+    countries.
+
+73. Tesla's Supercharger network, first launched in 2012, became
+    one of the most extensive fast-charging networks in the
+    world and has since been opened up to other automakers'
+    vehicles in many regions.
+
+74. The Combined Charging System (CCS) and Tesla's North American
+    Charging Standard (NACS) are among the major EV charging
+    connector standards used across different markets.
+
+75. Range anxiety, the fear of running out of charge before
+    reaching a charging station, has historically been cited as
+    one of the biggest psychological barriers to EV adoption.
+
+76. Modern EV battery ranges have increased substantially over
+    the past decade, with many mainstream models now offering
+    well over 250 miles (about 400 kilometers) of range on a
+    single charge.
+
+77. Automakers including Volkswagen, General Motors, Hyundai, and
+    Ford have invested tens of billions of dollars collectively
+    into dedicated EV platforms and battery manufacturing since
+    the early 2020s.
+
+78. Solid-state batteries, an emerging technology using solid
+    rather than liquid electrolytes, are being researched by
+    several automakers as a potential future upgrade offering
+    higher energy density and improved safety.
+
+79. Battery recycling has become an increasingly important
+    industry as the first generation of mass-market EV batteries
+    begins reaching end-of-life.
+
+80. Vehicle-to-grid (V2G) technology allows some EVs to send
+    stored electricity back into the power grid or into a home,
+    turning parked cars into potential backup power sources.
+
+81. The efficiency of an internal combustion engine is heavily
+    affected by its compression ratio, which measures how much
+    the air-fuel mixture is squeezed before ignition.
+
+82. Formula 1 and other motorsports have historically served as
+    testing grounds for combustion engine innovations that later
+    trickled down into consumer vehicles, such as turbocharging
+    and advanced fuel injection.
+
+83. Electric motors are also used extensively outside of
+    passenger cars, including in electric buses, trucks,
+    scooters, bicycles, and increasingly in electric aircraft
+    prototypes.
+
+84. Diesel engines are widely used in freight trucks, ships, and
+    heavy machinery due to their high torque output and fuel
+    efficiency at heavy loads.
+
+85. Ethanol and biodiesel are examples of biofuels that can be
+    blended with or substituted for traditional gasoline and
+    diesel in combustion engines with certain modifications.
+
+86. Engine displacement, usually measured in liters, refers to
+    the total volume swept by all the pistons in an engine and is
+    a common way of comparing engine size across different cars.
+
+87. Direct fuel injection, which sprays fuel straight into the
+    combustion chamber rather than the intake manifold, has
+    become common in modern gasoline engines for improved
+    efficiency and power.
+
+88. Cylinder deactivation technology allows some combustion
+    engines to shut off a portion of their cylinders during light
+    driving conditions to save fuel, then reactivate them when
+    more power is needed.
+
+89. Start-stop systems, now common in many gasoline and hybrid
+    vehicles, automatically shut off the engine when the car is
+    stationary, such as at a red light, to reduce fuel consumption
+    and emissions.
+
+90. The International Energy Agency projects that electric cars
+    could reach roughly half of global new car sales by 2035,
+    though the pace of that transition will depend heavily on
+    battery costs, charging infrastructure, and government policy
+    in different regions of the world.
+
+
+
+END OF DOCUMENT
+Compiled as a general knowledge and conversation-starter reference
+on internal combustion engines and electric vehicles. Facts and
+market figures reflect publicly available information as of 2026
+and are intended for informational and trivia purposes.

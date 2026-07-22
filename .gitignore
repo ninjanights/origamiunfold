@@ -120,3 +120,52 @@ instance/
 !dataset/
 !tests/
 !.gitkeep
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Environment
+.env
+
+# Database
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Sessions
+sessions/workspaces/
+
+# Chroma
+backend/chroma_db/
+backend/media/
+
+# Node
+frontend/node_modules/
+frontend/.next/
+
+# OS
+.DS_Store
+Thumbs.db
+venv/
+.venv/
+
+__pycache__/
+*.pyc
+
+.env
+
+backend/media/
+backend/logs/
+backend/chroma_db/
+backend/sessions/workspaces/
+backend/db.sqlite3
+
+frontend/.next/
+frontend/node_modules/
+
+.DS_Store
+.vscode/
