@@ -3,6 +3,9 @@ from sessions.session_model import SessionModel
 from rag_engine.vectorstore.chroma_store import ChromaStore
 from rag_engine.embeddings.bge_embedder import BGEEmbedder
 from rag_engine.retriever.filters import SearchFilters
+from core.settings import settings
+from rag_engine.reranking.bge_reranker import BGEReranker
+from core.logger import logger
 
 
 class RetrievalService:
@@ -19,6 +22,16 @@ class RetrievalService:
             self._vector_store = ChromaStore()
         return self._vector_store
 
+    @property
+    def reranker(self):
+        if not settings.ENABLE_RERANKER:
+            return None
+
+        if not hasattr(self, "_reranker"):
+            self._reranker = BGEReranker()
+
+        return self._reranker
+
     def retrieve(
         self,
         question: str,
@@ -28,7 +41,7 @@ class RetrievalService:
     ):
         query_embedding = self.embedder.embed_text(question)
 
-        return self.vector_store.search(
+        chunks = self.vector_store.search(
             embedding=query_embedding,
             filters=SearchFilters(
                 session_id=session.session_id,
@@ -36,3 +49,13 @@ class RetrievalService:
             ),
             top_k=top_k,
         )
+        if not settings.ENABLE_RERANKER:
+            logger.info("Reranker disabled.")
+
+        if self.reranker:
+            chunks = self.reranker.rerank(
+                query=question,
+                chunks=chunks,
+                top_k=top_k,
+            )
+        return chunks

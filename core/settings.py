@@ -6,9 +6,11 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
 
+
 class Settings:
 
     GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+    ENABLE_RERANKER = os.getenv("ENABLE_RERANKER", "False").lower() == "true"
 
     EMBEDDING_MODEL = os.getenv(
         "EMBEDDING_MODEL",
@@ -24,31 +26,17 @@ class Settings:
         "./backend/chroma_db",
     )
 
-    CHUNK_SIZE = int(
-        os.getenv("CHUNK_SIZE", 1000)
-    )
+    CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", 1000))
 
-    CHUNK_OVERLAP = int(
-        os.getenv("CHUNK_OVERLAP", 200)
-    )
+    CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", 200))
 
-    TOP_K = int(
-        os.getenv("TOP_K", 5)
-    )
+    TOP_K = int(os.getenv("TOP_K", 5))
 
-    TEMPERATURE = float(
-        os.getenv("TEMPERATURE", 0.2)
-    )
+    TEMPERATURE = float(os.getenv("TEMPERATURE", 0.2))
 
-    MAX_TOKENS = int(
-        os.getenv("MAX_TOKENS", 2048)
-    )
-    
-    
-    GEMINI_MODEL = os.getenv(
-    "GEMINI_MODEL",
-    "gemini-3.1-flash-lite"
-)
+    MAX_TOKENS = int(os.getenv("MAX_TOKENS", 2048))
+
+    GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.1-flash-lite")
 
 
 settings = Settings()
