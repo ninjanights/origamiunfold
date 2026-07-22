@@ -18,11 +18,18 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.conf import settings
 
 
-upload_service = UploadService()
-answer_service = AnswerService()
+def get_upload_service():
+    return UploadService()
+
+def get_answer_service():
+    return AnswerService()
+
+def get_file_service():
+    return FileService()
+
+
 session_manager = SessionManager()
 session_service = SessionService()
-file_service = FileService()
 
 
 @api_view(["GET"])
@@ -49,7 +56,7 @@ def upload(request):
 
     session = session_service.get_or_create_session(request)
 
-    upload_service.upload(
+    get_upload_service().upload(
         uploaded_file,
         session,
     )
@@ -79,7 +86,7 @@ def load_demo(request):
                 content=f.read(),
             )
 
-            upload_service.upload(uploaded_file, session)
+            get_upload_service().upload(uploaded_file, session)
 
     response = Response(
         {"message": "Demo workspace loaded."},
@@ -101,7 +108,7 @@ def chat(request):
         response = Response([])
         return attach_session(response, session)
     try:
-        result = answer_service.answer(
+        result = get_answer_service().answer(
             question=serializer.validated_data["question"],
             sources=serializer.validated_data.get("sources", []),
             session_id=session,
@@ -135,7 +142,7 @@ def files(request):
         response = Response([])
         return attach_session(response, session)
 
-    files = file_service.list_files(session)
+    files = get_file_service().list_files(session)
 
     response = Response(files)
     return attach_session(response, session)
@@ -154,7 +161,7 @@ def delete_files(request):
             status=status.HTTP_401_UNAUTHORIZED,
         )
 
-    result = file_service.delete_files(
+    result = get_file_service().delete_files(
         session=session,
         filenames=serializer.validated_data["files"],
     )
@@ -174,7 +181,7 @@ def delete_all(request):
             status=status.HTTP_401_UNAUTHORIZED,
         )
 
-    file_service.delete_all(session)
+    get_file_service().delete_all(session)
 
     response = Response(
         {

@@ -5,9 +5,14 @@ import shutil
 
 class FileService:
 
-    def __init__(self):
-        self.vector_store = ChromaStore()
-
+    @property
+    def vector_store(self):
+        if not hasattr(self, "_vector_store"):
+            self._vector_store = ChromaStore()
+        return self._vector_store
+    
+    
+    
     def list_files(self, session: SessionModel):
         uploads = session.workspace / "uploads"
 
