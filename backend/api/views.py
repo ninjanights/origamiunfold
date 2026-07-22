@@ -40,9 +40,6 @@ def health(request):
 @api_view(["POST"])
 @parser_classes([MultiPartParser, FormParser])
 def upload(request):
-    print(request.FILES)
-    print(request.data)
-
     uploaded_file = request.FILES.get("file")
     if uploaded_file is None:
         return Response(

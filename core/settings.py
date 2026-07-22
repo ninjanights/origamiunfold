@@ -7,8 +7,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
 
 class Settings:
-    print("BASE_DIR:", BASE_DIR)
-    print("API KEY:", os.getenv("GEMINI_API_KEY"))
 
     GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 

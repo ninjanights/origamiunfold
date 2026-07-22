@@ -19,9 +19,12 @@ db.sqlite3-journal
 
 media/
 staticfiles/
-
+__pycache__/
+*.py[cod]
+venv/
+.venv/
 .ipynb_checkpoints/
-
+*.sqlite3
 .pytest_cache/
 .coverage
 htmlcov/

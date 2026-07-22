@@ -30,7 +30,7 @@ export default function Footer() {
             href="https://github.com/ninjanights"
             target="_blank"
             aria-label="GitHub"
-            className="transition hover:text-[#F87C63] dark:hover:text-[#F87C63]"
+            className="transition hover:text-[#ADD7B9] dark:hover:text-[#ADD7B9]"
           >
             <svg
               aria-hidden="true"
@@ -44,7 +44,7 @@ export default function Footer() {
           <span className="text-neutral-300 dark:text-neutral-700">•</span>
           <Link
             href="/documentation"
-            className="transition hover:text-[#F87C63] dark:hover:text-[#F87C63]"
+            className="transition hover:text-[#ADD7B9] dark:hover:text-[#ADD7B9]"
           >
             {locale === "ja" ? "せつめい" : "Documentation"}
           </Link>

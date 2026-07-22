@@ -90,7 +90,7 @@ export default function Panel() {
   return (
     <section className="flex h-full items-center justify-center py-3">
       <div className="mx-auto flex min-h-[24rem] w-full max-w-5xl gap-3">
-        <div className="flex min-w-0 flex-1 flex-col rounded-[2rem] border-2 border-dashed border-[#F87C63] bg-transparent px-5 py-5 dark:border-[#F87C63]/50 sm:px-7">
+        <div className="flex min-w-0 flex-1 flex-col rounded-[2rem] border-2 border-dashed border-[#ADD7B9] bg-transparent px-5 py-5 dark:border-[#ADD7B9]/50 sm:px-7">
           <div className="flex items-center justify-between pb-4 text-sm font-bold">
             <span className="text-neutral-500 dark:text-neutral-400">_fox</span>
             <span className="text-neutral-500 dark:text-neutral-400">{locale === "ja" ? "{すべて}" : "{Everything}"}</span>

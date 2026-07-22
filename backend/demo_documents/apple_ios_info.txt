@@ -1,11 +1,8 @@
-=================================================================
-APPLE & iOS: THE COMPLETE FACT FILE
 A Deep Dive Into the History, Products, and Culture of Apple Inc.
-=================================================================
 
 
-INTRODUCTION
------------------------------------------------------------------
+introduction
+
 Apple Inc. is one of the most influential companies in the history
 of technology, a business that has repeatedly reshaped how people
 listen to music, make phone calls, work, communicate, and think
@@ -28,8 +25,7 @@ workings of iOS, that can be used as trivia, conversation starters,
 or general reference material.
 
 
-PART ONE: THE ESSAY — HOW APPLE BECAME APPLE
------------------------------------------------------------------
+PART ONE: THE ESSAY — HOW APPLE BECAME Apple
 
 Apple's origin story is legendary in Silicon Valley folklore.
 Steve Jobs, Steve Wozniak, and Ronald Wayne founded Apple Computer
@@ -138,8 +134,7 @@ prices, and right-to-repair battles, Apple's influence on modern
 computing, communication, and consumer culture is undeniable.
 
 
-PART TWO: 90 APPLE & iOS FACTS
------------------------------------------------------------------
+PART TWO: 90 APPLE & iOS Facts
 
 COMPANY HISTORY & FOUNDING
 
@@ -492,9 +487,7 @@ CULTURE, BUSINESS & MISCELLANEOUS
     consumers around the world every year.
 
 
------------------------------------------------------------------
 END OF DOCUMENT
 Compiled as a general knowledge and conversation-starter reference
 on Apple Inc. and iOS. Facts reflect publicly known information
 as of 2026 and are intended for informational and trivia purposes.
------------------------------------------------------------------

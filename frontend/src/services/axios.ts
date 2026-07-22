@@ -15,8 +15,6 @@ const api = axios.create({
 
 api.interceptors.response.use(
   async (response) => {
-    console.log("Response intercepted");
-
     const session = response.headers["x-session-id"];
     if (!session) {
       return response;

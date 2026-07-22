@@ -9,7 +9,10 @@ interface UploadCardProps {
   uploadLimitReached: boolean;
 }
 
-export default function UploadCard({ onUploadComplete, uploadLimitReached }: UploadCardProps) {
+export default function UploadCard({
+  onUploadComplete,
+  uploadLimitReached,
+}: UploadCardProps) {
   const [file, setFile] = useState<File | null>(null);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -35,17 +38,13 @@ export default function UploadCard({ onUploadComplete, uploadLimitReached }: Upl
 
   return (
     <section className="flex h-full items-center justify-center py-3">
-      
-      
       <div className="mx-auto w-full max-w-xl space-y-5">
-
-        
         <label
           htmlFor="file-upload"
           className={`flex flex-col items-center justify-center rounded-full
-          border-2 border-dashed border-[#F87C63] bg-transparent px-8 py-7 transition
-          hover:border-[#F87C63]
-          dark:border-[#F87C63]/50 dark:hover:border-[#F87C63] ${uploadLimitReached ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
+          border-2 border-dashed border-[#ADD7B9] bg-transparent px-8 py-7 transition
+          hover:border-[#ADD7B9]
+          dark:border-[#ADD7B9]/50 dark:hover:border-[#ADD7B9] ${uploadLimitReached ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
         >
           <span className="text-base font-bold text-neutral-800 dark:text-neutral-100">
             {uploadLimitReached
@@ -53,10 +52,10 @@ export default function UploadCard({ onUploadComplete, uploadLimitReached }: Upl
                 ? "ぶんしょの じょうげんです"
                 : "Document limit reached"
               : file
-              ? file.name
-              : locale === "ja"
-                ? "ぶんしょを えらぶ"
-                : "Choose a document"}
+                ? file.name
+                : locale === "ja"
+                  ? "ぶんしょを えらぶ"
+                  : "Choose a document"}
           </span>
 
           <span className="mt-1.5 text-sm font-medium text-neutral-500 dark:text-neutral-400">
@@ -65,8 +64,8 @@ export default function UploadCard({ onUploadComplete, uploadLimitReached }: Upl
                 ? "ぶんしょは 21こまで おくれます。"
                 : "You can upload up to 21 documents."
               : locale === "ja"
-              ? "ここを おして ふぁいるを えらぶ"
-              : "Click here to browse your files"}
+                ? "ここを おして ふぁいるを えらぶ"
+                : "Click here to browse your files"}
           </span>
 
           <input
@@ -88,11 +87,11 @@ export default function UploadCard({ onUploadComplete, uploadLimitReached }: Upl
           <button
             disabled={!file || loading || uploadLimitReached}
             onClick={handleUpload}
-            className="rounded-full bg-[#F87C63] px-6 py-2.5 text-sm font-bold
-            text-neutral-900 transition hover:bg-[#F87C63]/80
-            disabled:cursor-not-allowed disabled:opacity-50
-            dark:bg-[#F87C63] dark:text-neutral-950
-            dark:hover:bg-[#F87C63]/80"
+            className="rounded-full bg-[#ADD7B9] px-6 py-2.5 text-sm font-bold
+            text-neutral-900 transition hover:bg-[#ADD7B9]/80
+           disabled:opacity-50
+            dark:bg-[#ADD7B9] dark:text-neutral-950
+            dark:hover:bg-[#ADD7B9]/80"
           >
             {loading
               ? locale === "ja"
@@ -104,9 +103,6 @@ export default function UploadCard({ onUploadComplete, uploadLimitReached }: Upl
           </button>
         </div>
       </div>
-
-
-
     </section>
   );
 }

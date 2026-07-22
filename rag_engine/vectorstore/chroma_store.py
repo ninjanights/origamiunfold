@@ -5,14 +5,27 @@ from rag_engine.models.chunk import Chunk
 from rag_engine.vectorstore.base_vectorstore import BaseVectorStore
 from rag_engine.retriever.filters import SearchFilters
 
+import os
+
+from core.settings import settings
+
 
 class ChromaStore(BaseVectorStore):
     def __init__(
         self,
-        persist_directory: str = "./storage/chroma",
+        persist_directory: str | None = None,
         collection_name: str = "origamidocuments",
     ):
-        self.client = PersistentClient(path=persist_directory)
+
+        persist_directory = persist_directory or settings.CHROMA_DB_PATH
+        os.makedirs(
+            persist_directory,
+            exist_ok=True,
+        )
+
+        self.client = PersistentClient(
+            path=persist_directory,
+        )
         self.collection = self.client.get_or_create_collection(name=collection_name)
         logger.info(f"Connected to Chroma collection: {collection_name}")
 

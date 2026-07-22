@@ -42,14 +42,14 @@ export default function Header() {
         <nav className="flex items-center gap-3 sm:gap-6">
           <Link
             href="/"
-            className="text-sm font-semibold text-neutral-500 transition-colors duration-200 hover:text-[#F87C63] dark:text-neutral-400 dark:hover:text-[#F87C63]"
+            className="text-sm font-semibold text-neutral-500 transition-colors duration-200 hover:text-[#ADD7B9] dark:text-neutral-400 dark:hover:text-[#ADD7B9]"
           >
             {locale === "ja" ? "いえ" : "Home"}
           </Link>
 
           <Link
             href="/about"
-            className="text-sm font-semibold text-neutral-500 transition-colors duration-200 hover:text-[#F87C63] dark:text-neutral-400 dark:hover:text-[#F87C63]"
+            className="text-sm font-semibold text-neutral-500 transition-colors duration-200 hover:text-[#ADD7B9] dark:text-neutral-400 dark:hover:text-[#ADD7B9]"
           >
             {locale === "ja" ? "このあぷり" : "About"}
           </Link>
@@ -66,7 +66,7 @@ export default function Header() {
             <button
               type="button"
               onClick={toggleTheme}
-              className="flex size-7 items-center justify-center rounded-full text-neutral-500 transition hover:bg-[#F87C63]/30 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-[#F87C63]/15 dark:hover:text-[#F87C63]"
+              className="flex size-7 items-center justify-center rounded-full text-neutral-500 transition hover:bg-[#ADD7B9]/30 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-[#ADD7B9]/15 dark:hover:text-[#ADD7B9]"
               aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
             >
               {theme === "light" ? (
@@ -83,7 +83,7 @@ export default function Header() {
             <button
               type="button"
               onClick={toggleLocale}
-              className="flex size-7 items-center justify-center rounded-full text-xs font-medium text-neutral-500 transition hover:bg-[#F87C63]/30 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-[#F87C63]/15 dark:hover:text-[#F87C63]"
+              className="flex size-7 items-center justify-center rounded-full text-xs font-medium text-neutral-500 transition hover:bg-[#ADD7B9]/30 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-[#ADD7B9]/15 dark:hover:text-[#ADD7B9]"
               aria-label={locale === "ja" ? "Switch to English" : "にほんごに きりかえる"}
             >
               {locale === "ja" ? "a" : "あ"}
