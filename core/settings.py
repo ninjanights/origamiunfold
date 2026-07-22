@@ -10,20 +10,10 @@ load_dotenv(BASE_DIR / ".env")
 class Settings:
 
     GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-    ENABLE_RERANKER = os.getenv("ENABLE_RERANKER", "False").lower() == "true"
-
-    EMBEDDING_MODEL = os.getenv(
-        "EMBEDDING_MODEL",
-        "BAAI/bge-base-en-v1.5",
-    )
-    RERANKER_MODEL = os.getenv(
-        "RERANKER_MODEL",
-        "BAAI/bge-reranker-base",
-    )
 
     CHROMA_DB_PATH = os.getenv(
         "CHROMA_DB_PATH",
-        "./backend/chroma_db",
+        "./storage/chroma",
     )
 
     CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", 1000))
@@ -37,6 +27,31 @@ class Settings:
     MAX_TOKENS = int(os.getenv("MAX_TOKENS", 2048))
 
     GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.1-flash-lite")
+
+    # Embeddings
+    EMBEDDING_PROVIDER = os.getenv(
+        "EMBEDDING_PROVIDER",
+        "jina",
+    )
+    EMBEDDING_MODEL = os.getenv(
+        "EMBEDDING_MODEL",
+        "jina-embeddings-v3",
+    )
+
+    # Reranker
+    ENABLE_RERANKER = os.getenv("ENABLE_RERANKER", "true").lower() == "true"
+
+    RERANKER_PROVIDER = os.getenv(
+        "RERANKER_PROVIDER",
+        "jina",
+    )
+
+    RERANKER_MODEL = os.getenv(
+        "RERANKER_MODEL",
+        "jina-reranker-v2-base-multilingual",
+    )
+
+    JINA_API_KEY = os.getenv("JINA_API_KEY")
 
 
 settings = Settings()

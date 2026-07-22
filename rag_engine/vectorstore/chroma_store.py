@@ -18,10 +18,13 @@ class ChromaStore(BaseVectorStore):
     ):
 
         persist_directory = persist_directory or settings.CHROMA_DB_PATH
+
+        logger.info(f"Using Chroma directory: {persist_directory}")
         os.makedirs(
             persist_directory,
             exist_ok=True,
         )
+        logger.info(f"Chroma path: {settings.CHROMA_DB_PATH}")
 
         self.client = PersistentClient(
             path=persist_directory,

@@ -6,6 +6,9 @@ from rag_engine.retriever.filters import SearchFilters
 from core.settings import settings
 from rag_engine.reranking.bge_reranker import BGEReranker
 from core.logger import logger
+from rag_engine.embeddings.jina_embedder import JinaEmbedder
+
+from rag_engine.reranking.jina_reranker import JinaReranker
 
 
 class RetrievalService:
@@ -13,7 +16,13 @@ class RetrievalService:
     @property
     def embedder(self):
         if not hasattr(self, "_embedder"):
-            self._embedder = BGEEmbedder()
+
+            if settings.EMBEDDING_PROVIDER == "jina":
+                self._embedder = JinaEmbedder()
+
+            else:
+                self._embedder = BGEEmbedder()
+
         return self._embedder
 
     @property
@@ -24,11 +33,16 @@ class RetrievalService:
 
     @property
     def reranker(self):
+
         if not settings.ENABLE_RERANKER:
             return None
 
         if not hasattr(self, "_reranker"):
-            self._reranker = BGEReranker()
+
+            if settings.RERANKER_PROVIDER == "jina":
+                self._reranker = JinaReranker()
+            else:
+                self._reranker = BGEReranker()
 
         return self._reranker
 
@@ -47,7 +61,7 @@ class RetrievalService:
                 session_id=session.session_id,
                 sources=sources,
             ),
-            top_k=top_k,
+            top_k=settings.TOP_K,
         )
         if not settings.ENABLE_RERANKER:
             logger.info("Reranker disabled.")

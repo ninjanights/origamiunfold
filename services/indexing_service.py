@@ -8,13 +8,14 @@ from rag_engine.chunking.recursive_chunker import RecursiveChunker
 from rag_engine.embeddings.bge_embedder import BGEEmbedder
 from rag_engine.vectorstore.chroma_store import ChromaStore
 
-from core.logger import logger
+from rag_engine.embeddings.jina_embedder import JinaEmbedder
 
+from core.settings import settings
+from core.logger import logger
 from sessions.session_model import SessionModel
 
 
 class IndexingService:
-
     @property
     def loader(self):
         if not hasattr(self, "_loader"):
@@ -48,7 +49,13 @@ class IndexingService:
     @property
     def embedder(self):
         if not hasattr(self, "_embedder"):
-            self._embedder = BGEEmbedder()
+
+            if settings.EMBEDDING_PROVIDER == "jina":
+                self._embedder = JinaEmbedder()
+
+            else:
+                self._embedder = BGEEmbedder()
+
         return self._embedder
 
     @property
@@ -56,3 +63,27 @@ class IndexingService:
         if not hasattr(self, "_vector_store"):
             self._vector_store = ChromaStore()
         return self._vector_store
+
+    # --------------------------------------------------------
+
+    def index(self, file_path: Path, session: SessionModel) -> None:
+
+        documents = self.loader.load(file_path)
+        all_chunks = []
+        for doc in documents:
+
+            doc.content = self.cleaner.clean(doc.content)
+            doc.content = self.normalizer.normalize(doc.content)
+            doc.content = self.duplicate_remover.remove_duplicates(doc.content)
+            chunks = self.chunker.chunk(doc)
+
+            for chunk in chunks:
+                chunk.session_id = session.session_id
+            all_chunks.extend(chunks)
+
+        embeddings = self.embedder.embed_chunks(all_chunks)
+        for chunk, embedding in zip(all_chunks, embeddings):
+            chunk.embedding = embedding
+
+        self.vector_store.add(all_chunks)
+        logger.info(f"Chunks created: {len(all_chunks)}")
