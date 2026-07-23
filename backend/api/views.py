@@ -140,8 +140,9 @@ def attach_session(
 
 @api_view(["GET"])
 def files(request):
-    if request.COOKIES.get(session_service.COOKIE_NAME) is None:
+    if session_service.get_session_id_from_request(request) is None:
         return Response([])
+
 
     try:
         session = session_service.get_active_session(request)

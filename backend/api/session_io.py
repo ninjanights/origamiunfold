@@ -12,6 +12,12 @@ class SessionService:
     def __init__(self):
         self.session_manager = SessionManager()
 
+    def get_session_id_from_request(self, request) -> str | None:
+        session_id = request.COOKIES.get(self.COOKIE_NAME)
+        if not session_id:
+            session_id = request.headers.get("X-Session-ID") or request.META.get("HTTP_X_SESSION_ID")
+        return session_id
+
     # Upload
     # Create a session if one doesn't already exist
     def get_or_create_session(
@@ -19,7 +25,7 @@ class SessionService:
         request,
     ) -> SessionModel:
 
-        session_id = request.COOKIES.get(self.COOKIE_NAME)
+        session_id = self.get_session_id_from_request(request)
 
         if session_id:
             try:
@@ -49,7 +55,7 @@ class SessionService:
         request,
     ) -> SessionModel:
 
-        session_id = request.COOKIES.get(self.COOKIE_NAME)
+        session_id = self.get_session_id_from_request(request)
 
         if session_id is None:
             raise FileNotFoundError("No active session.")
@@ -69,6 +75,7 @@ class SessionService:
             session = self.session_manager.create_session()
 
         return session
+
 
     # Refresh Cookie + Update last_access
     def refresh_session(

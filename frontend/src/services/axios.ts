@@ -13,9 +13,24 @@ const api = axios.create({
   withCredentials: true,
 });
 
+api.interceptors.request.use(
+  async (config) => {
+    try {
+      const session = await getStoredSession();
+      if (session) {
+        config.headers["X-Session-ID"] = session;
+      }
+    } catch (err) {
+      console.error("Error reading stored session:", err);
+    }
+    return config;
+  },
+  (error) => Promise.reject(error),
+);
+
 api.interceptors.response.use(
   async (response) => {
-    const session = response.headers["x-session-id"];
+    const session = response.headers["x-session-id"] || response.headers["X-Session-ID"];
     if (!session) {
       return response;
     }
@@ -32,3 +47,4 @@ api.interceptors.response.use(
 );
 
 export default api;
+

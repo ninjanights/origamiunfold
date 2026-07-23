@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 import os
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -140,4 +142,26 @@ CSRF_TRUSTED_ORIGINS =  [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+    "x-session-id",
+    "X-Session-ID",
+]
+
+
+CORS_EXPOSE_HEADERS = [
+    "x-session-id",
+    "X-Session-ID",
+]
+
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
