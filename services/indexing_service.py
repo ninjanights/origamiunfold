@@ -5,7 +5,6 @@ from rag_engine.preprocessing.cleaner import Cleaner
 from rag_engine.preprocessing.normalizer import Normalizer
 from rag_engine.preprocessing.deduplicator import Deduplicator
 from rag_engine.chunking.recursive_chunker import RecursiveChunker
-from rag_engine.embeddings.bge_embedder import BGEEmbedder
 from rag_engine.vectorstore.chroma_store import ChromaStore
 
 from rag_engine.embeddings.jina_embedder import JinaEmbedder
@@ -49,12 +48,7 @@ class IndexingService:
     @property
     def embedder(self):
         if not hasattr(self, "_embedder"):
-
-            if settings.EMBEDDING_PROVIDER == "jina":
-                self._embedder = JinaEmbedder()
-
-            else:
-                self._embedder = BGEEmbedder()
+            self._embedder = JinaEmbedder()
 
         return self._embedder
 

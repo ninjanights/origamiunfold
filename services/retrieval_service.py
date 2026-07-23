@@ -1,7 +1,6 @@
 from sessions.session_model import SessionModel
 
 from rag_engine.vectorstore.chroma_store import ChromaStore
-from rag_engine.embeddings.bge_embedder import BGEEmbedder
 from rag_engine.retriever.filters import SearchFilters
 from core.settings import settings
 from core.logger import logger
@@ -14,12 +13,7 @@ class RetrievalService:
     @property
     def embedder(self):
         if not hasattr(self, "_embedder"):
-
-            if settings.EMBEDDING_PROVIDER == "jina":
-                self._embedder = JinaEmbedder()
-
-            else:
-                self._embedder = BGEEmbedder()
+            self._embedder = JinaEmbedder()
 
         return self._embedder
 

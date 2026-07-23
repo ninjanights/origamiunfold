@@ -28,11 +28,11 @@ class AnswerService:
     def answer(
         self,
         question: str,
-        session_id: SessionModel,
+        session: SessionModel,
         sources: list[str] | None = None,
-    ) -> str:
+    ) -> dict:
         chunks = self.retriever.retrieve(
-            question=question, session=session_id, sources=sources
+            question=question, session=session, sources=sources
         )
         prompt = self.prompt_builder.build(
             question=question,

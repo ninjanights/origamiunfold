@@ -4,6 +4,7 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from rest_framework import status
 from .session_io import SessionService
+from .session_io import SessionModel
 
 from api.serializers import DeleteFilesSerializer
 from api.serializers import ChatSerializer
@@ -111,7 +112,7 @@ def chat(request):
         result = get_answer_service().answer(
             question=serializer.validated_data["question"],
             sources=serializer.validated_data.get("sources", []),
-            session_id=session,
+            session=session,
         )
     except Exception as e:
         return Response(
@@ -123,11 +124,13 @@ def chat(request):
     return attach_session(response, session)
 
 
-def attach_session(response: Response, session: str) -> Response:
-    response["X-Session-ID"] = session
+def attach_session(
+    response: Response,
+    session: SessionModel,
+) -> Response:
+    response["X-Session-ID"] = session.session_id
     session_service.refresh_session(response, session)
     return response
-
 
 @api_view(["GET"])
 def files(request):

@@ -1,5 +1,4 @@
 from django.apps import AppConfig
-import os
 
 
 class ApiConfig(AppConfig):
@@ -7,4 +6,6 @@ class ApiConfig(AppConfig):
     name = "api"
 
     def ready(self):
-        return
+        from scheduler import start_scheduler
+
+        start_scheduler()
