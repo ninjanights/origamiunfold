@@ -2,7 +2,7 @@ import re
 
 class Splitter:
     def split_paragraphs(self, text: str) -> list[str]:
-        return [p for p in re.split("\r\n\s*\n", text)  if p.strip()  ]
+        return [p for p in re.split(r"\r\n\s*\n", text)  if p.strip()  ]
     
     def split_lines(self, text:str) -> list[str]:
         return [line for line in text.splitlines() if line.strip()]
