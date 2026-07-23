@@ -1,5 +1,4 @@
 from pathlib import Path
-from docx import Document as DocxDocument
 from rag_engine.models.document import Document
 from rag_engine.ingestion.base_loader import BaseLoader
 from core.logger import logger
@@ -9,6 +8,10 @@ class DocxLoader(BaseLoader):
     def load(self, file_path: str) -> list[Document]:
         path = self.validate(file_path)
 
+        # lazy
+        from docx import Document as DocxDocument
+        
+        
         logger.info(f"Loading Docx: {path.name}")
         file_size = path.stat().st_size
         try:

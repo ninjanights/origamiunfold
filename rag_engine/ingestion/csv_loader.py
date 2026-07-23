@@ -1,5 +1,4 @@
 from pathlib import Path
-import pandas as pd
 from rag_engine.models.document import Document
 from rag_engine.ingestion.base_loader import BaseLoader
 from core.logger import logger
@@ -7,6 +6,9 @@ from core.logger import logger
 
 class CsvLoader(BaseLoader):
     def load(self, file_path: str) -> list[Document]:
+        
+        # lazy
+        import pandas as pd
         path = self.validate(file_path)
         file_size = path.stat().st_size
         logger.info(f"Loading CSV: {path.name}")

@@ -1,4 +1,3 @@
-from pathlib import Path
 from rag_engine.models.document import Document
 from rag_engine.ingestion.base_loader import BaseLoader
 from core.logger import logger
@@ -29,6 +28,6 @@ class MarkdownLoader(BaseLoader):
         except Exception:
             logger.exception(f"Failed loading Markdown: {path.name}")
             raise
-        
+
         logger.info(f"Loaded Markdown: {path.name}")
         return documents

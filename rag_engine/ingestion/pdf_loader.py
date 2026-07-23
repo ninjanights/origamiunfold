@@ -1,5 +1,4 @@
 from pathlib import Path
-import fitz
 from rag_engine.models.document import Document
 from rag_engine.ingestion.base_loader import BaseLoader
 from core.logger import logger
@@ -8,6 +7,9 @@ from core.logger import logger
 class PdfLoader(BaseLoader):
     def load(self, file_path: str) -> list[Document]:
 
+
+        # lazy
+        import fitz
         path = self.validate(file_path)
         file_size = path.stat().st_size
         documents: list[Document] = []
