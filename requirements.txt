@@ -40,5 +40,3 @@ RapidFuzz
 langdetect
 
 tqdm
-
-uuid_utils (only if you actually import it)
