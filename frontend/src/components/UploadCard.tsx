@@ -20,7 +20,7 @@ export default function UploadCard({
   const { upload, loading } = useUpload();
 
   useEffect(() => {
-    setIsMounted(true);
+    setTimeout(() => setIsMounted(true), 0);
   }, []);
 
   const handleUpload = async () => {

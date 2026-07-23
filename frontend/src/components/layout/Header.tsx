@@ -13,7 +13,7 @@ export default function Header() {
     const savedTheme = localStorage.getItem("theme");
     const nextTheme = savedTheme === "dark" ? "dark" : "light";
 
-    setTheme(nextTheme);
+    setTimeout(() => setTheme(nextTheme), 0);
     document.documentElement.classList.toggle("dark", nextTheme === "dark");
   }, []);
 

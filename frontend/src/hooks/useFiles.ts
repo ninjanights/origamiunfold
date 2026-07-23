@@ -29,7 +29,7 @@ export function useFiles() {
   }, []);
 
   useEffect(() => {
-    void refreshFiles();
+    setTimeout(() => { void refreshFiles(); }, 0);
   }, [refreshFiles]);
 
   return { files, loading, refreshFiles };

@@ -40,7 +40,7 @@ export default function AboutPage() {
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    setMounted(true);
+    setTimeout(() => setMounted(true), 0);
   }, []);
 
   return (

@@ -54,7 +54,7 @@ export default function Panel() {
   const pageNumbers = visiblePages(totalPages, activePage);
 
   useEffect(() => {
-    setActivePage(totalPages);
+    setTimeout(() => setActivePage(totalPages), 0);
   }, [conversations.length, totalPages]);
 
   const requestAnswer = async (questionText: string, questionId?: string) => {

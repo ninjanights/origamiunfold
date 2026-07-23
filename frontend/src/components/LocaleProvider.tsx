@@ -17,7 +17,7 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const savedLocale = localStorage.getItem("locale");
 
-    if (savedLocale === "en" || savedLocale === "ja") setLocale(savedLocale);
+    if (savedLocale === "en" || savedLocale === "ja") setTimeout(() => setLocale(savedLocale), 0);
   }, []);
 
   const toggleLocale = () => {
