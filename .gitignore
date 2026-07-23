@@ -155,10 +155,11 @@ frontend/.next/
 Thumbs.db
 venv/
 .venv/
-
+backend/.venv/
 __pycache__/
 *.pyc
-
+backend/storage/
+storage/
 .env
 
 backend/media/

@@ -27,11 +27,10 @@ SECRET_KEY = "django-insecure-1srk#btr0*qnwktf6^&az#es-7vgi$i1fo%=kvjsaj)f)9mb42
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
 
-ALLOWED_HOSTS = [
-    ".onrender.com"
-    "localhost",
-    "127.0.0.1",
-]
+ALLOWED_HOSTS = os.getenv(
+    "ALLOWED_HOSTS",
+    ".onrender.com,localhost,127.0.0.1",
+).split(",")
 
 # Application definition
 
@@ -51,8 +50,6 @@ MIDDLEWARE = [
     
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    
-    "django.middleware.security.SecurityMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -131,11 +128,15 @@ USE_TZ = True
 STATIC_URL = "static/"
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
+    "http://localhost:3000",
+    "https://origamiunfold.vercel.app",
 ]
 
 
-CSRF_TRUSTED_ORIGINS = [
+CSRF_TRUSTED_ORIGINS =  [
     "http://127.0.0.1:3000",
+    "http://localhost:3000",
+    "https://origamiunfold.vercel.app",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
