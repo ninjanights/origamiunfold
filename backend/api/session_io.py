@@ -86,8 +86,8 @@ class SessionService:
             value=session.session_id,
             max_age=self.COOKIE_AGE,
             httponly=False,
-            samesite="Lax",
-            secure=False,  # True in production
+            samesite="None",
+            secure=True,  # True in production
         )
 
     # Remove Cookie

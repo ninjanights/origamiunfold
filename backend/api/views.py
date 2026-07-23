@@ -75,8 +75,14 @@ def upload(request):
 @api_view(["POST"])
 def load_demo(request):
     session = session_service.get_or_create_session(request)
-
+    
+  
     demo_folder = Path(settings.BASE_DIR) / "demo_documents"
+    
+    print("BASE DIR:", settings.BASE_DIR)
+    print("DEMO FOLDER:", demo_folder)
+    print("FILES:", list(demo_folder.iterdir()))
+    
     for path in demo_folder.iterdir():
         if not path.is_file():
             continue
