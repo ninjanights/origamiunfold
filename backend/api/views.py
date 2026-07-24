@@ -98,9 +98,10 @@ def load_demo(request):
 
     files = [f for f in demo_folder.iterdir() if f.is_file()]
     total = len(files)
-    base_progress = int((index - 1) / total * 100)
 
     for index, path in enumerate(files, start=1):
+
+        base_progress = int((index - 1) / total * 100)
         progress.upload(
             "demo_loading",
             f"Loading {path.name} ({index}/{total})",
