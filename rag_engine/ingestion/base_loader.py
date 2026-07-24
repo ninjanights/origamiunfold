@@ -2,10 +2,14 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 from rag_engine.models.document import Document
 from core.logger import logger
+from backend.realtime.progress_reporter import ProgressReporter
 
 
 class BaseLoader(ABC):
-    def validate(self, file_path: str) -> Path:
+    def validate(
+        self,
+        file_path: str,
+    ) -> Path:
         path = Path(file_path)
 
         if not path.exists():
@@ -19,4 +23,8 @@ class BaseLoader(ABC):
         return path
 
     @abstractmethod
-    def load(self, file_path: str) -> list[Document]: ...
+    def load(
+        self,
+        file_path: str,
+        progress: ProgressReporter | None = None,
+    ) -> list[Document]: ...

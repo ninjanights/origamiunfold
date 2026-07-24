@@ -5,7 +5,13 @@ from core.logger import logger
 
 
 class PdfLoader(BaseLoader):
-    def load(self, file_path: str) -> list[Document]:
+    def load(self, file_path: str, progress=None) -> list[Document]:
+        if progress:
+            progress.upload(
+        "loading_pdf",
+        "Reading PDF",
+        20,
+    )
 
 
         # lazy
@@ -40,6 +46,12 @@ class PdfLoader(BaseLoader):
         except Exception:
             logger.exception(f"Failed loading PDF: {path.name}")
             raise
+        if progress:
+            progress.upload(
+        "pdf_loaded",
+        f"Loaded {len(documents)} pages.",
+        25,
+    )
 
         logger.info(f"Loaded {len(documents)} pages from {path.name}")
         return documents

@@ -24,7 +24,12 @@ apscheduler
 
 python-jose
 bcrypt
-
+channels
+daphne
+uvicorn
+websockets
+python-socketio
+django-eventstream
 aiohttp
 
 unstructured

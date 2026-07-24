@@ -5,13 +5,18 @@ from core.logger import logger
 
 
 class DocxLoader(BaseLoader):
-    def load(self, file_path: str) -> list[Document]:
+    def load(self, file_path: str, progress=None) -> list[Document]:
         path = self.validate(file_path)
+        if progress:
+            progress.upload(
+                "loading_docx",
+                "Reading DOCX",
+                20,
+            )
 
         # lazy
         from docx import Document as DocxDocument
-        
-        
+
         logger.info(f"Loading Docx: {path.name}")
         file_size = path.stat().st_size
         try:
@@ -35,5 +40,12 @@ class DocxLoader(BaseLoader):
         except Exception:
             logger.exception(f"Failed loading Docx: {path.name}")
             raise
+
+        if progress:
+            progress.upload(
+                "pdf_loaded",
+                f"Loaded {len(documents)} page.",
+                25,
+            )
         logger.info(f"Loaded {len(documents)} pages from {path.name}")
         return documents

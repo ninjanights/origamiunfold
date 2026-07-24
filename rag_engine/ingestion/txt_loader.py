@@ -5,7 +5,16 @@ from core.logger import logger
 
 class TextLoader(BaseLoader):
 
-    def load(self, file_path: str) -> list[Document]:
+    def load(self, file_path: str, progress=None) -> list[Document]:
+
+        if progress:
+            progress.upload(
+                "loading_txt",
+                "Reading TXT",
+                20,
+                preview="File 2. 'abc abc   def  #'",
+                after="File 2. 'abc abc   def  #'",
+            )
 
         path = self.validate(file_path)
         file_size = path.stat().st_size
@@ -25,6 +34,15 @@ class TextLoader(BaseLoader):
         except Exception:
             logger.exception(f"Failed loading Text: {path.name}")
             raise
+        if progress:
+            loaded_preview = text[:80] if text else "File 2. 'abc abc   def  #'"
+            progress.upload(
+                "txt_loaded",
+                f"Loaded {len(documents)} page.",
+                25,
+                preview=loaded_preview,
+                after=loaded_preview,
+            )
 
         logger.info(f"Loaded Text: {path.name}")
         return documents

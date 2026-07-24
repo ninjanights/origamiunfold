@@ -9,10 +9,8 @@ from rag_engine.ingestion.json_loader import JsonLoader
 from rag_engine.ingestion.markdown_loader import MarkdownLoader
 
 
-
-
 class DocumentLoader:
-    def load(self, file_path: str):
+    def load(self, file_path: str, progress=None):
         extension = Path(file_path).suffix.lower()
 
         if extension == ".txt":
@@ -39,4 +37,4 @@ class DocumentLoader:
         else:
             raise ValueError(f"Unsupported file type: {extension}")
 
-        return loader.load(file_path)
+        return loader.load(file_path, progress)

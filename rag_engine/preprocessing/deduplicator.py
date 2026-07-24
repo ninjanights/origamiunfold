@@ -1,5 +1,12 @@
+from backend.realtime.progress_reporter import ProgressReporter
+
+
 class Deduplicator:
-    def remove_duplicate_lines(self, text: str) -> str:
+    def remove_duplicate_lines(
+        self,
+        text: str,
+        progress: ProgressReporter | None = None
+    ) -> str:
         seen = set()
         result = []
 
@@ -14,5 +21,29 @@ class Deduplicator:
 
         return "\n".join(result)
 
-    def remove_duplicates(self, text: str) -> str:
-        return self.remove_duplicate_lines(text)
+    def remove_duplicates(
+        
+        self, text: str, progress: ProgressReporter | None = None
+    ) -> str:
+        
+        input_preview = text[:80] if text else "abc cde efg"
+        if progress:
+            progress.upload(
+                "deduplicate_start",
+                "Removing duplicate content",
+                41,
+                preview=input_preview,
+                after=input_preview,
+            )
+        text =  self.remove_duplicate_lines(text)
+        dedup_preview = text[:80] if text else "abc cde efg"
+        if progress:
+            progress.upload(
+                "deduplicate_done",
+                "Duplicate removal completed.",
+                45,
+                preview=input_preview,
+                after=dedup_preview,
+            )
+
+        return text 

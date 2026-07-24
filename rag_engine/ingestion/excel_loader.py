@@ -5,7 +5,13 @@ from core.logger import logger
 
 
 class ExcelLoader(BaseLoader):
-    def load(self, file_path: str) -> list[Document]:
+    def load(self, file_path: str, progress=None) -> list[Document]:
+        if progress:
+            progress.upload(
+        "loading_excel",
+        "Reading Excel",
+        20,
+    )
         # lazy
         import pandas as pd
         
@@ -35,7 +41,14 @@ class ExcelLoader(BaseLoader):
                     )
                 )
         except Exception:
+            
             logger.exception(f"Failed loading Excel: {path.name}")
             raise
+        if progress:
+            progress.upload(
+        "excel_loaded",
+        f"Loaded {len(documents)} page.",
+        25,
+    )
 
         return documents

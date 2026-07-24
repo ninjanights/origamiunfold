@@ -4,6 +4,7 @@ from core.logger import logger
 from rag_engine.models.chunk import Chunk
 from rag_engine.vectorstore.base_vectorstore import BaseVectorStore
 from rag_engine.retriever.filters import SearchFilters
+from backend.realtime.progress_reporter import ProgressReporter
 
 import os
 
@@ -50,7 +51,21 @@ class ChromaStore(BaseVectorStore):
                 metadata[key] = json.dumps(value)
         return metadata
 
-    def add(self, chunks: list[Chunk]) -> None:
+    def add(
+        self, chunks: list[Chunk], progress: ProgressReporter | None = None
+    ) -> None:
+        emb_preview = "[[1.43], [7.18], 0.11]"
+        if chunks and chunks[0].embedding and len(chunks[0].embedding) >= 3:
+            emb_preview = f"[[{chunks[0].embedding[0]:.2f}], [{chunks[0].embedding[1]:.2f}], {chunks[0].embedding[2]:.2f}]"
+
+        if progress:
+            progress.upload(
+                "saving_vectors",
+                f"Saving {len(chunks)} chunks to Chroma",
+                90,
+                preview=emb_preview,
+                after="Saving vectors to Chroma...",
+            )
         if not chunks:
             logger.warning("No chunks provided for insertion.")
             return
@@ -67,6 +82,14 @@ class ChromaStore(BaseVectorStore):
                 embeddings=[chunk.embedding for chunk in chunks],
                 metadatas=[self._serialize_metadata(chunk) for chunk in chunks],
             )
+            if progress:
+                progress.upload(
+                    "index_complete",
+                    "Document indexed successfully.",
+                    100,
+                    preview=emb_preview,
+                    after="The answer we found",
+                )
             logger.info(f"Inserted {len(chunks)} chunks.")
         except Exception:
             logger.exception("Failed to insert chunks into Chroma.")

@@ -4,6 +4,7 @@ from rag_engine.chunking.base_chunker import BaseChunker
 from rag_engine.chunking.splitter import Splitter
 from rag_engine.models.chunk import Chunk
 from rag_engine.models.document import Document
+from backend.realtime.progress_reporter import ProgressReporter
 
 
 class RecursiveChunker(BaseChunker):
@@ -16,7 +17,19 @@ class RecursiveChunker(BaseChunker):
         self.chunk_overlap = chunk_overlap
         self.splitter = Splitter()
 
-    def chunk(self, document: Document) -> list[Chunk]:
+    def chunk(
+        self, document: Document, progress: ProgressReporter | None = None
+    ) -> list[Chunk]:
+
+        doc_preview = document.content[:80] if document.content else "abc cde efg"
+        if progress:
+            progress.upload(
+                "chunking_start",
+                "Chunking document",
+                46,
+                preview=doc_preview,
+                after=doc_preview,
+            )
         document = self.validate(document)
         chunks: list[Chunk] = []
         paragraphs = self.splitter.split_paragraphs(document.content)
@@ -40,9 +53,9 @@ class RecursiveChunker(BaseChunker):
                         )
 
                         chunk_number += 1
-                        
+
                         overlap = current[-self.chunk_overlap :]
-                        
+
                         current = overlap + " " + sentence + " "
                 if current:
 
@@ -50,6 +63,16 @@ class RecursiveChunker(BaseChunker):
                         self._create_chunk(document, current.strip(), chunk_number)
                     )
                     chunk_number += 1
+
+        if progress:
+            chunks_preview = f"[{len(chunks)} chunks: '{chunks[0].content[:40]}']" if chunks else "abc cde efg"
+            progress.upload(
+                "chunking_done",
+                f"Created {len(chunks)} chunks.",
+                55,
+                preview=doc_preview,
+                after=chunks_preview,
+            )
 
         return chunks
 

@@ -2,6 +2,7 @@ from core.settings import settings
 from rag_engine.embeddings.base_embedder import BaseEmbedder
 from rag_engine.models.chunk import Chunk
 import requests
+from backend.realtime.progress_reporter import ProgressReporter
 
 
 class JinaEmbedder(BaseEmbedder):
@@ -31,7 +32,17 @@ class JinaEmbedder(BaseEmbedder):
     def embed_chunks(
         self,
         chunks: list[Chunk],
+        progress: ProgressReporter | None = None,
     ) -> list[list[float]]:
+        chunks_preview = f"[{len(chunks)} chunks: '{chunks[0].content[:40]}']" if chunks else "abc cde efg"
+        if progress:
+            progress.upload(
+                "embedding_start",
+                f"Generating embeddings for {len(chunks)} chunks...",
+                60,
+                preview=chunks_preview,
+                after="Generating embeddings...",
+            )
 
         texts = [chunk.content for chunk in chunks]
 
@@ -50,4 +61,14 @@ class JinaEmbedder(BaseEmbedder):
 
         response.raise_for_status()
 
-        return [item["embedding"] for item in response.json()["data"]]
+        embeddings = [item["embedding"] for item in response.json()["data"]]
+        if progress:
+            emb_preview = f"[[{embeddings[0][0]:.2f}], [{embeddings[0][1]:.2f}], {embeddings[0][2]:.2f}]" if embeddings and len(embeddings[0]) >= 3 else "[[1.43], [7.18], 0.11]"
+            progress.upload(
+                "embedding_done",
+                f"Generated {len(embeddings)} embeddings.",
+                75,
+                preview=chunks_preview,
+                after=emb_preview,
+            )
+        return embeddings

@@ -15,6 +15,7 @@ from services.upload_service import UploadService
 from django.utils.timezone import now
 from pathlib import Path
 from django.core.files.uploadedfile import SimpleUploadedFile
+from backend.realtime.progress_reporter import ProgressReporter
 
 from django.conf import settings
 
@@ -22,8 +23,10 @@ from django.conf import settings
 def get_upload_service():
     return UploadService()
 
+
 def get_answer_service():
     return AnswerService()
+
 
 def get_file_service():
     return FileService()
@@ -56,6 +59,14 @@ def upload(request):
         )
 
     session = session_service.get_or_create_session(request)
+    progress = ProgressReporter(session.session_id)
+    progress.upload(
+        "upload_started",
+        "Upload request received.",
+        0,
+        preview=f"File: {uploaded_file.name}",
+        after="File 2. 'abc abc   def  #'",
+    )
 
     get_upload_service().upload(
         uploaded_file,
@@ -74,18 +85,27 @@ def upload(request):
 
 @api_view(["POST"])
 def load_demo(request):
+
     session = session_service.get_or_create_session(request)
-    
-  
+    progress = ProgressReporter(session.session_id)
+    progress.upload(
+        "demo_started",
+        "Loading demo documents...",
+        0,
+    )
+
     demo_folder = Path(settings.BASE_DIR) / "demo_documents"
-    
-    print("BASE DIR:", settings.BASE_DIR)
-    print("DEMO FOLDER:", demo_folder)
-    print("FILES:", list(demo_folder.iterdir()))
-    
-    for path in demo_folder.iterdir():
-        if not path.is_file():
-            continue
+
+    files = [f for f in demo_folder.iterdir() if f.is_file()]
+    total = len(files)
+    base_progress = int((index - 1) / total * 100)
+
+    for index, path in enumerate(files, start=1):
+        progress.upload(
+            "demo_loading",
+            f"Loading {path.name} ({index}/{total})",
+            base_progress,
+        )
 
         with open(path, "rb") as f:
             uploaded_file = SimpleUploadedFile(
@@ -93,11 +113,20 @@ def load_demo(request):
                 content=f.read(),
             )
 
-            get_upload_service().upload(uploaded_file, session)
+            get_upload_service().upload(
+                uploaded_file,
+                session,
+            )
 
     response = Response(
         {"message": "Demo workspace loaded."},
         status=status.HTTP_200_OK,
+    )
+
+    progress.upload(
+        "demo_finished",
+        "Demo documents loaded successfully.",
+        100,
     )
 
     return attach_session(response, session)
@@ -110,6 +139,17 @@ def chat(request):
 
     try:
         session = session_service.get_active_session(request)
+        progress = ProgressReporter(session.session_id)
+
+        question_text = serializer.validated_data.get("question", "")
+        progress.chat(
+            "question_received",
+            "Question received.",
+            5,
+            preview=f"Query about {question_text}",
+            after=f"Asking about {question_text}",
+        )
+
     except FileNotFoundError:
         session = session_service.get_or_create_session(request)
         response = Response([])
@@ -119,6 +159,7 @@ def chat(request):
             question=serializer.validated_data["question"],
             sources=serializer.validated_data.get("sources", []),
             session=session,
+            progress=progress,
         )
     except Exception as e:
         return Response(
@@ -138,11 +179,11 @@ def attach_session(
     session_service.refresh_session(response, session)
     return response
 
+
 @api_view(["GET"])
 def files(request):
     if session_service.get_session_id_from_request(request) is None:
         return Response([])
-
 
     try:
         session = session_service.get_active_session(request)

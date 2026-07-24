@@ -5,7 +5,14 @@ from core.logger import logger
 
 
 class CsvLoader(BaseLoader):
-    def load(self, file_path: str) -> list[Document]:
+    def load(self, file_path: str, progress=None) -> list[Document]:
+        
+        if progress:
+            progress.upload(
+        "loading_csv",
+        "Reading CSV",
+        20,
+    )
         
         # lazy
         import pandas as pd
@@ -34,6 +41,12 @@ class CsvLoader(BaseLoader):
         except Exception:
             logger.exception(f"Failed loading CSV: {path.name}")
             raise
+        if progress:
+            progress.upload(
+        "csv_loaded",
+        f"Loaded {len(documents)} page(s).",
+        25,
+    )
 
         logger.info(f"Loaded {len(documents)} pages from {path.name}")
         return documents

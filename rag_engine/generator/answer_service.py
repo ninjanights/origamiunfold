@@ -3,6 +3,7 @@ from core.model_registry import ModelRegistry
 from services.retrieval_service import RetrievalService
 from rag_engine.prompts.prompt_builder import PromptBuilder
 import time
+from backend.realtime.progress_reporter import ProgressReporter
 
 
 class AnswerService:
@@ -30,17 +31,25 @@ class AnswerService:
         question: str,
         session: SessionModel,
         sources: list[str] | None = None,
+        progress: ProgressReporter | None = None,
     ) -> dict:
+        if progress:
+            progress.chat(
+                "retrieving_context",
+                "Searching relevant documents...",
+                15,
+                preview=f"Question: {question}",
+                after="Searching relevant documents...",
+            )
         chunks = self.retriever.retrieve(
-            question=question, session=session, sources=sources
+            question=question, session=session, sources=sources, progress=progress
         )
         prompt = self.prompt_builder.build(
-            question=question,
-            chunks=chunks,
+            question=question, chunks=chunks, progress=progress
         )
         for i in range(3):
             try:
-                response = self.llm.generate(prompt)
+                response = self.llm.generate(prompt, progress=progress)
                 break
             except Exception:
                 if i == 2:
@@ -55,5 +64,15 @@ class AnswerService:
                     "page": chunk.page_number,
                     "chunk": chunk.chunk_number,
                 }
+            )
+
+        if progress:
+            ans_prev = f"Answer is {response[:60]}" if response else "Answer ready."
+            progress.chat(
+                "completed",
+                "Answer ready.",
+                100,
+                preview=ans_prev,
+                after="The answer we found",
             )
         return {"answer": response, "sources": sources}

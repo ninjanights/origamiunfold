@@ -4,7 +4,13 @@ from core.logger import logger
 
 
 class MarkdownLoader(BaseLoader):
-    def load(self, file_path: str) -> list[Document]:
+    def load(self, file_path: str, progress=None) -> list[Document]:
+        if progress:
+            progress.upload(
+                "loading_markdown",
+                "Reading Markdown",
+                20,
+            )
         path = self.validate(file_path)
 
         logger.info(f"Loading Markdown Content: {path.name}")
@@ -28,6 +34,12 @@ class MarkdownLoader(BaseLoader):
         except Exception:
             logger.exception(f"Failed loading Markdown: {path.name}")
             raise
+        if progress:
+            progress.upload(
+                "markdown_loaded",
+                f"Loaded {len(documents)} page.",
+                25,
+            )
 
         logger.info(f"Loaded Markdown: {path.name}")
         return documents

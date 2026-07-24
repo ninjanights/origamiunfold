@@ -9,6 +9,9 @@ from rag_engine.vectorstore.chroma_store import ChromaStore
 
 from rag_engine.embeddings.jina_embedder import JinaEmbedder
 
+from backend.realtime.progress_reporter import ProgressReporter
+
+
 from core.settings import settings
 from core.logger import logger
 from sessions.session_model import SessionModel
@@ -61,23 +64,30 @@ class IndexingService:
     # --------------------------------------------------------
 
     def index(self, file_path: Path, session: SessionModel) -> None:
+        progress = ProgressReporter(session.session_id)
 
-        documents = self.loader.load(file_path)
+
+        documents = self.loader.load(file_path, progress)
+        
         all_chunks = []
         for doc in documents:
 
-            doc.content = self.cleaner.clean(doc.content)
-            doc.content = self.normalizer.normalize(doc.content)
-            doc.content = self.duplicate_remover.remove_duplicates(doc.content)
-            chunks = self.chunker.chunk(doc)
+            doc.content = self.cleaner.clean(doc.content, progress)
+            doc.content = self.normalizer.normalize(doc.content, progress)
+            doc.content = self.duplicate_remover.remove_duplicates(doc.content, progress)
+            
+           
+            chunks = self.chunker.chunk(doc, progress)
 
             for chunk in chunks:
                 chunk.session_id = session.session_id
             all_chunks.extend(chunks)
+            
+        
 
-        embeddings = self.embedder.embed_chunks(all_chunks)
+        embeddings = self.embedder.embed_chunks(all_chunks, progress)
         for chunk, embedding in zip(all_chunks, embeddings):
-            chunk.embedding = embedding
+            chunk.embedding = embedding  
 
-        self.vector_store.add(all_chunks)
+        self.vector_store.add(all_chunks, progress)
         logger.info(f"Chunks created: {len(all_chunks)}")
